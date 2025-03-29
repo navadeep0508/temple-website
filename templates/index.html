@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Sitaramachandra Lakshmana Sametha Anjaneya Swamivarla Temple</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="header-slideshow">
+        <div class="slide" style="background-image: url('{{ url_for('static', filename='temple-side.jpg') }}')"></div>
+        <div class="slide" style="background-image: url('{{ url_for('static', filename='temple-front.jpg') }}')"></div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='frontfest.jpg') }}" alt="Temple Side View" class="logo-image">
+                <div class="temple-title">
+                    <h1>JAI SRI RAM</h1>
+                    <h2>Sri Sitaramachandra Lakshmana Sametha<br>Anjaneyaswamivarla Temple</h2>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="#about" class="nav-item"><i class="fas fa-info-circle"></i> About</a>
+                <a href="#darshan" class="nav-item"><i class="fas fa-pray"></i> Darshan</a>
+                <a href="#offerings" class="nav-item"><i class="fas fa-hand-holding-heart"></i> Donations</a>
+                <a href="#address" class="nav-item"><i class="fas fa-map-marker-alt"></i> Address</a>
+                <a href="{{ url_for("signin") }}" class="sign-in-btn"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+                <a href="{{ url_for('signup') }}" class="sign-up-btn"><i class="fas fa-user-plus"></i> Sign Up</a>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-slideshow">
+                <div class="hero-slide active" style="background-image: url('{{ url_for('static', filename='temple-side.jpg') }}');"></div>
+                <div class="hero-slide" style="background-image: url('{{ url_for('static', filename='temple-front.jpg') }}');"></div>
+                <div class="hero-slide" style="background-image: url('{{ url_for('static', filename='frontfest.jpg') }}');"></div>
+            </div>
+            <div class="hero-content">
+                <div class="om-symbol">॥ ॐ ॥</div>
+                <h1>Sri Sitaramachandra Lakshmana Sametha<br>Anjaneya Swamivaarla Temple</h1>
+                <p>Ulavapalla Village, Dagadarthi Mandal, SPSR Nellore<br>524152</p>
+                <a href="signup.html" class="cta-button">
+                    <i class="fas fa-user-plus"></i>
+                    Join Our Temple Community
+                </a>
+            </div>
+        </section>
+
+        <section id="about" class="welcome">
+            <div class="welcome-content">
+                <div class="deities-image">
+                    <img src="{{ url_for('static', filename='frontfest2.jpg') }}" alt="Sri Rama" class="deity-img">
+                </div>
+                <div class="welcome-text">
+                    <h2 class="section-title">About Our Temple</h2>
+                    <p>Welcome to the Sri Sitaramachandra Lakshmana Sametha Anjaneyaswami varla Temple, located in the peaceful village of Ulavapalla, in Dagadarthi Mandal, SPSR Nellore District, Andhra Pradesh. This temple is a special place for those seeking peace and spiritual comfort. Surrounded by beautiful nature, it is a place where tradition and devotion come together. The temple is decorated with detailed sculptures, and the sounds of prayers fill the air. Visitors can take part in daily rituals and feel the calm, sacred energy of the temple.</p>
+                </div>
+            </div>
+        </section>
+
+        <style>
+            .welcome {
+                padding: 60px 20px;
+                background: linear-gradient(rgba(255, 245, 230, 0.9), rgba(255, 245, 230, 0.9)), url('assets/temple-pattern.png');
+                margin-bottom: 40px;
+            }
+
+            .welcome-content {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                gap: 40px;
+            }
+
+            .deities-image {
+                flex: 1;
+                max-width: 400px;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .deity-img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                display: block;
+            }
+
+            .welcome-text {
+                flex: 1;
+                padding: 20px;
+            }
+
+            .welcome-text .section-title {
+                text-align: left;
+                margin-bottom: 20px;
+                color: var(--primary-color);
+            }
+
+            .welcome-text p {
+                font-size: 1.1rem;
+                line-height: 1.8;
+                color: #333;
+                text-align: justify;
+            }
+
+            @media (max-width: 992px) {
+                .welcome-content {
+                    gap: 30px;
+                }
+
+                .deities-image {
+                    max-width: 350px;
+                }
+
+                .welcome-text p {
+                    font-size: 1rem;
+                    line-height: 1.6;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .welcome-content {
+                    flex-direction: column;
+                    gap: 25px;
+                }
+
+                .deities-image {
+                    max-width: 300px;
+                    margin: 0 auto;
+                }
+
+                .welcome-text {
+                    padding: 0;
+                }
+
+                .welcome-text .section-title {
+                    text-align: center;
+                    font-size: 1.8rem;
+                }
+            }
+
+            .logo-container {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+                padding: 10px;
+                max-width: 600px;
+                position: relative;
+                z-index: 1001;
+            }
+
+            .logo-container .logo-image {
+                width: 50px;
+                height: 50px;
+                object-fit: cover;
+                border-radius: 50%;
+                border: 2px solid var(--primary-color);
+            }
+
+            .temple-title {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .temple-title h1 {
+                font-size: 1.3rem;
+                color: var(--primary-color);
+                margin: 0;
+                line-height: 1.2;
+            }
+
+            .temple-title h2 {
+                font-size: 0.85rem;
+                color: #333;
+                margin: 0;
+                font-weight: 500;
+                line-height: 1.2;
+            }
+
+            .mobile-menu-btn {
+                display: none;
+                cursor: pointer;
+                font-size: 1.5rem;
+                color: var(--primary-color);
+                z-index: 1001;
+                padding: 5px 10px;
+                margin-top: 5px;
+                background: rgba(255, 245, 230, 0.95);
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+
+            @media (max-width: 768px) {
+                .mobile-menu-btn {
+                    display: block;
+                }
+
+                .nav-links {
+                    position: fixed;
+                    top: 0;
+                    right: -280px;
+                    height: 100vh;
+                    width: 280px;
+                    background: white;
+                    flex-direction: column;
+                    padding: 80px 20px 20px;
+                    transition: right 0.3s ease;
+                    z-index: 999;
+                    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                }
+
+                .nav-links.active {
+                    right: 0;
+                }
+
+                .nav-item {
+                    margin: 10px 0;
+                    font-size: 1.1rem;
+                    width: 100%;
+                    text-align: left;
+                }
+
+                .sign-in-btn,
+                .sign-up-btn {
+                    margin-top: 10px;
+                    width: 100%;
+                    text-align: center;
+                }
+
+                header {
+                    position: fixed;
+                    width: 100%;
+                    z-index: 1000;
+                    background: rgba(255, 245, 230, 0.95);
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                }
+
+                nav {
+                    padding: 5px 15px;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    position: relative;
+                }
+            }
+
+            .darshan {
+                padding: 60px 20px;
+                background: linear-gradient(rgba(255, 245, 230, 0.9), rgba(255, 245, 230, 0.9));
+            }
+
+            .darshan-content {
+                max-width: 1200px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .ritual-info {
+                max-width: 800px;
+                margin: 0 auto 30px;
+            }
+
+            .timing-box {
+                display: flex;
+                justify-content: center;
+                align-items: stretch;
+                gap: 30px;
+                margin-top: 30px;
+                flex-wrap: wrap;
+            }
+
+            .timing-card {
+                background: white;
+                padding: 30px 40px;
+                border-radius: 15px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                text-align: center;
+                min-width: 280px;
+                max-width: 350px;
+                margin: 0;
+                flex: 1;
+            }
+
+            .timing-card h3 {
+                color: var(--primary-color);
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+
+            .timing-card .time {
+                font-size: 1.2rem;
+                color: #333;
+                margin: 10px 0;
+            }
+
+            .timing-card .blessing {
+                color: var(--primary-color);
+                font-size: 1.3rem;
+                margin-top: 20px;
+                font-weight: 600;
+            }
+
+            @media (max-width: 768px) {
+                .timing-box {
+                    gap: 20px;
+                }
+                
+                .timing-card {
+                    min-width: 250px;
+                    padding: 25px 30px;
+                    margin: 0;
+                }
+            }
+
+            /* Mobile Menu Styles */
+            .blur-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(5px);
+                z-index: 998;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .blur-overlay.active {
+                display: block;
+                opacity: 1;
+            }
+        </style>
+
+        <section id="darshan" class="darshan">
+            <div class="darshan-content">
+                <h2 class="section-title">Darshan Timings</h2>
+                <div class="ritual-info">
+                    <p>Every day, the temple conducts its pooja, carefully following traditional rituals and schedules to honor the deities based on ancient customs.</p>
+                </div>
+                <div class="timing-box">
+                    <div class="timing-card">
+                        <h3>Daily Timings</h3>
+                        <p class="time">Monday to Sunday</p>
+                        <p class="time">7:00 AM to 7:00 PM</p>
+                        <p class="blessing">Jai Sri Ram</p>
+                    </div>
+                    <div class="timing-card">
+                        <h3>Special Darshan</h3>
+                        <p class="time">Monday to Sunday</p>
+                        <p class="time">9:00 AM to 10:00 AM</p>
+                        <p class="blessing">Jai Sri Ram</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="offerings" class="offerings">
+            <h2 class="section-title">Divine Offerings</h2>
+            <div class="offerings-content">
+                <p>The Sri Sitaramachandra Lakshmana Sametha Anjaneya SwamivarlaTemple serves as a spiritual hub, providing devotees with prayers, rituals, and festive celebrations with a peaceful ambiance.</p>
+                <div class="offerings-grid">
+                    <div class="offering-card">
+                        <i class="fas fa-om"></i>
+                        <h3>Temple Donations</h3>
+                        <p>Support the temple's activities and maintenance</p>
+                    </div>
+                    <div class="offering-card">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <h3>Annadanam</h3>
+                        <p>Contribute to the temple's food distribution program</p>
+                    </div>
+                </div>
+                <div class="bank-details">
+                    <h3>Donation Details</h3>
+                    <p><strong>BANK NAME:</strong>ANDHRA PRAGATHI GRAMEENA BANK</p>
+                    <p><strong>ACCOUNT NUMBER:</strong>91184361980</p>
+                    <p><strong>IFSC:</strong>APGB0004039</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="address" class="address">
+            <h2 class="section-title">Location & Address</h2>
+            <div class="address-content">
+                <div class="address-details">
+                    <div class="contact-info">
+                        <h3><i class="fas fa-map-marker-alt"></i> Temple Address</h3>
+                        <p>Sri Seetharama Lakshman Sametha Anjaneya Swami Temple</p>
+                        <p>Ulavapalla Village, Dagadarthi Mandal</p>
+                        <p>SPSR Nellore District</p>
+                        <p>Andhra Pradesh - 524152</p>
+                    </div>
+                    <div class="contact-info">
+                        <h3><i class="fas fa-phone"></i> Contact Details</h3>
+                        <p>Temple Office: +91-XXXXXXXXXX</p>
+                        <p>Email: info@templedomain.com</p>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3857.184577785591!2d79.93893582716804!3d14.876543210987654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4d6b8f8f8f8f8f%3A0x0!2sRamalayam+Temple%2C+MPUP+School%2C+Ulavapalla%2C+Dagadarthi+Mandal%2C+Nellore%2C+Andhra+Pradesh+524152!5e0!3m2!1sen!2sin!4v1234567890123"
+                        width="100%" 
+                        height="450" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Sri Seetharama Lakshman Sametha Anjaneya Swami Temple. All rights reserved.</p>
+    </footer>
+
+    <div class="blur-overlay"></div>
+
+    <script>
+        // Mobile menu toggle with blur effect
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        const blurOverlay = document.querySelector('.blur-overlay');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        function toggleMobileMenu() {
+            navLinks.classList.toggle('active');
+            blurOverlay.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        blurOverlay.addEventListener('click', toggleMobileMenu);
+
+        // Smooth scroll and close menu on nav item click
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = item.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    // Close mobile menu
+                    if (navLinks.classList.contains('active')) {
+                        toggleMobileMenu();
+                    }
+                    
+                    // Smooth scroll to section
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        });
+
+        document.querySelectorAll('section').forEach((section) => {
+            section.classList.add('fade-in');
+            observer.observe(section);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Slideshow functionality
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        let currentHeroSlide = 0;
+
+        function showHeroSlide(index) {
+            heroSlides.forEach(slide => slide.classList.remove('active'));
+            heroSlides[index].classList.add('active');
+        }
+
+        function nextHeroSlide() {
+            currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+            showHeroSlide(currentHeroSlide);
+        }
+
+        // Initialize hero slideshow
+        showHeroSlide(0);
+        setInterval(nextHeroSlide, 5000); // Change slide every 5 seconds
+    </script>
+</body>
+</html> 

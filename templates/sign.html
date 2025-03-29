@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Sri Seetharama Temple</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='sign.css') }}">
+</head>
+<body class="signin-page">
+    <div class="signin-container">
+        <div class="signin-box">
+            <div class="temple-border">
+                <div class="back-nav">
+                    <a href="{{ url_for('home') }}" class="back-arrow" title="Return to Home">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+                <div class="signin-content">
+                    <div class="om-symbol">॥ ॐ ॥</div>
+                    <h1 class="welcome-text">NAMASTE</h1>
+                    
+                    <form class="signin-form" id="signinForm">
+                        <div class="form-group">
+                            <div class="input-icon">
+                                <input type="number" id="email" name="email" placeholder="Enter your mobile number" required>
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-icon">
+                                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                                <i class="fas fa-lock"></i>
+                                <i class="fas fa-eye-slash toggle-password"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-options">
+                            <label class="remember-me">
+                                <input type="checkbox" id="remember">
+                                <span class="checkmark"></span>
+                                Remember me
+                            </label>
+                            <a href="#" class="forgot-password">Forgot Password?</a>
+                        </div>
+
+                        <button type="submit" class="signin-btn">
+                            <span>Sign In</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        
+                        <div class="signup-link">
+                            Don't have an account? 
+                            <a href="{{ url_for('signup') }}" class="create-account">Create Account</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle password visibility
+        document.querySelector('.toggle-password').addEventListener('click', function() {
+            const input = document.getElementById('password');
+            if (input.type === 'password') {
+                input.type = 'text';
+                this.classList.remove('fa-eye-slash');
+                this.classList.add('fa-eye');
+            } else {
+                input.type = 'password';
+                this.classList.remove('fa-eye');
+                this.classList.add('fa-eye-slash');
+            }
+        });
+
+        // Form validation and submission
+        document.getElementById('signinForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const mobileNumber = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (!mobileNumber || !password) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            try {
+                const response = await fetch('{{ url_for("signin") }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        mobile_number: mobileNumber,
+                        password: password
+                    })
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    alert(result.success);
+                    window.location.href = '{{ url_for("homepage") }}';
+                } else {
+                    alert(result.error);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('There was an error signing in. Please try again.');
+            }
+        });
+
+        // Add animation classes when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.signin-box').classList.add('animate-in');
+        });
+    </script>
+</body>
+</html>

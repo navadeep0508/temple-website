@@ -1,0 +1,503 @@
+/* Temple-themed variables */
+:root {
+    --primary-color: #8B0000; /* Deep Red */
+    --secondary-color: #DAA520; /* Golden */
+    --text-color: #333;
+    --light-bg: #FFF5E6; /* Warm Light */
+    --accent-color: #CD853F; /* Golden Brown */
+    --border-color: #DAA520; /* Golden */
+    --input-bg: rgba(255, 255, 255, 0.95);
+    --transition-speed: 0.3s;
+    --google-color: #DB4437;
+    --facebook-color: #4267B2;
+}
+
+.signin-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #FFF5E6, #FFE5CC);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('assets/temple-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.signin-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 245, 230, 0.92);
+    backdrop-filter: blur(8px);
+    z-index: 0;
+}
+
+.signin-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.signin-box {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 245, 230, 0.95));
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(139, 0, 0, 0.15);
+    width: 100%;
+}
+
+.temple-border {
+    border: 2px solid var(--border-color);
+    border-radius: 18px;
+    padding: 3rem 2rem;
+    position: relative;
+}
+
+.temple-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid var(--border-color);
+    border-radius: 15px;
+    margin: 1rem;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.om-symbol {
+    display: block; /* Show the original Om symbol */
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.om-decoration {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    letter-spacing: 5px;
+    margin-bottom: 0.5rem;
+}
+
+.welcome-text {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.welcome-text::before {
+    content: 'ॐ';
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: var(--secondary-color);
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.welcome-text::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--border-color), var(--primary-color), var(--border-color));
+}
+
+.form-group {
+    display: grid;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+}
+
+.input-icon {
+    position: relative;
+}
+
+.input-icon input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 2.5rem;
+    border: 2px solid rgba(218, 165, 32, 0.3);
+    border-radius: 10px;
+    background-color: var(--input-bg);
+    transition: all var(--transition-speed) ease;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.input-icon i:not(.toggle-password) {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-color);
+    opacity: 0.7;
+}
+
+.input-icon .toggle-password {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-color);
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.input-icon i:hover {
+    opacity: 1;
+    color: var(--secondary-color);
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.signin-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--primary-color), #A52A2A);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block; /* Remove flex display */
+    text-align: center;
+}
+
+.signin-btn:hover {
+    background: linear-gradient(135deg, #A52A2A, var(--primary-color));
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(139, 0, 0, 0.3);
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--text-color);
+}
+
+.create-account {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color var(--transition-speed) ease;
+}
+
+.create-account:hover {
+    color: var(--secondary-color);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .signin-container {
+        padding: 1rem;
+    }
+    
+    .temple-border {
+        padding: 2rem 1.5rem;
+    }
+    
+    .welcome-text {
+        font-size: 1.8rem;
+    }
+}
+
+/* Animation for sign-in box */
+.animate-in {
+    animation: boxAppear 1s ease forwards;
+}
+
+@keyframes boxAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) rotateX(10deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(5deg);
+    }
+}
+
+/* Animation for form elements */
+.signin-form .form-group,
+.signin-form .form-options,
+.signin-form .signin-btn,
+.signin-form .signup-link {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.signin-form .form-group:nth-child(1) { animation-delay: 0.2s; }
+.signin-form .form-group:nth-child(2) { animation-delay: 0.4s; }
+.signin-form .form-options { animation-delay: 0.6s; }
+.signin-form .signup-link { animation-delay: 0.8s; }
+.signin-form .signin-btn { animation-delay: 1s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Checkbox styling */
+.checkmark {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--primary-color);
+    border-radius: 4px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.remember-me input:checked + .checkmark {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.remember-me input:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+}
+
+.remember-me input {
+    display: none;
+}
+
+.social-signin {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem;
+    border: 2px solid rgba(218, 165, 32, 0.3);
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.social-btn.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+}
+
+.social-btn.google:hover {
+    border-color: var(--google-color);
+    color: var(--google-color);
+}
+
+.social-btn.facebook:hover {
+    border-color: var(--facebook-color);
+    color: var(--facebook-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .signin-container {
+        padding: 1rem;
+    }
+
+    .temple-border {
+        padding: 2rem 1.5rem;
+    }
+
+    .welcome-text {
+        font-size: 1.8rem;
+    }
+
+    .social-signin {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Custom Checkbox */
+.remember-me input {
+    display: none;
+}
+
+.checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--accent-color);
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+    transition: all var(--transition-speed) ease;
+}
+
+.remember-me input:checked + .checkmark {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.remember-me input:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+}
+
+/* Remove any animation classes */
+.animate-in {
+    animation: none;
+}
+
+/* Add temple corner decorations */
+.temple-border::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border: 3px solid var(--border-color);
+    border-radius: 0 0 0 15px;
+    top: 15px;
+    right: 15px;
+    border-left: none;
+    border-bottom: none;
+    opacity: 0.7;
+}
+
+@keyframes borderGlow {
+    0% {
+        box-shadow: 0 0 5px var(--secondary-color);
+    }
+    50% {
+        box-shadow: 0 0 20px var(--secondary-color);
+    }
+    100% {
+        box-shadow: 0 0 5px var(--secondary-color);
+    }
+}
+
+/* Back navigation styles */
+.back-nav {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 10;
+}
+
+.back-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--primary-color), #A52A2A);
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(139, 0, 0, 0.2);
+    border: 2px solid rgba(218, 165, 32, 0.5);
+}
+
+.back-arrow:hover {
+    transform: scale(1.1) translateX(-3px);
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    box-shadow: 0 6px 12px rgba(139, 0, 0, 0.3);
+    border-color: var(--secondary-color);
+}
+
+.back-arrow i {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.back-arrow:hover i {
+    transform: translateX(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .back-nav {
+        top: 12px;
+        left: 12px;
+    }
+    
+    .back-arrow {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .back-arrow i {
+        font-size: 0.9rem;
+    }
+} 

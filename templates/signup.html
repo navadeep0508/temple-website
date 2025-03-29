@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Sri Seetharama Temple</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
+</head>
+<body class="signup-page">
+    <div class="signup-container">
+        <div class="signup-box">
+            <div class="temple-border">
+                <div class="back-nav">
+                    <a href="{{ url_for('home') }}" class="back-arrow" title="Return to Home">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+                <div class="signup-content">
+                    <div class="om-symbol">॥ ॐ ॥</div>
+                    <h1 class="welcome-text">WELCOME</h1>
+                    
+                    <form class="signup-form" id="signupForm">
+                        <div class="form-group">
+                            <label for="email">Mobile Number:</label>
+                            <input type="tel" id="email" name="email" pattern="[0-9]{10}" title="Please enter exactly 10 digits" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">User Name:</label>
+                            <input type="text" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <div class="password-input">
+                                <input type="password" id="password" name="password" required>
+                                <i class="fas fa-eye-slash toggle-password"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password:</label>
+                            <div class="password-input">
+                                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                                <i class="fas fa-eye-slash toggle-password"></i>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="signup-btn">Sign Up</button>
+                        
+                        <div class="login-link">
+                            Already have an account? 
+                            <a href="{{ url_for('sign') }}" class="signin-link">Sign In</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle password visibility
+        document.querySelectorAll('.toggle-password').forEach(icon => {
+            icon.addEventListener('click', function() {
+                const input = this.previousElementSibling;
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    this.classList.remove('fa-eye-slash');
+                    this.classList.add('fa-eye');
+                } else {
+                    input.type = 'password';
+                    this.classList.remove('fa-eye');
+                    this.classList.add('fa-eye-slash');
+                }
+            });
+        });
+
+        // Form validation and submission
+        document.getElementById('signupForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const mobileNumber = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            try {
+                const response = await fetch('{{ url_for("signup") }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        email: mobileNumber,
+                        username: username,
+                        password: password
+                    })
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    alert(result.success);
+                    window.location.href = '{{ url_for("signin") }}';
+                } else {
+                    console.error('Error response:', result.error);
+                    alert(result.error);
+                }
+            } catch (error) {
+               
+                window.location.href = '{{ url_for("signin") }}';
+            }
+        });
+
+        // Add animation classes when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.signup-box').classList.add('animate-in');
+        });
+    </script>
+</body>
+</html>

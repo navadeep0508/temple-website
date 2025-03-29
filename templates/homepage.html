@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Sri Seetharama Temple</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Navigation styles */
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-item {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-item:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .nav-item i {
+            font-size: 1.1rem;
+        }
+
+        .donate-btn, .donations-btn {
+            background: var(--primary-color);
+            color: white !important;
+        }
+
+        .donate-btn:hover, .donations-btn:hover {
+            background: #d35400;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Add these styles to your CSS */
+        header {
+            padding: 0;
+            height: 65px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 245, 230, 0.95);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            height: 100%;
+            padding: 5px 0;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .logo {
+            height: 45px;
+            width: 45px;
+            border-radius: 50%;
+            border: 2px solid var(--secondary-color);
+            object-fit: cover;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+
+        .temple-name {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 2px;
+        }
+
+        .temple-name h1 {
+            font-size: 1.4rem;
+            margin: 0;
+            padding: 0;
+            line-height: 1.3;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .temple-full-name {
+            font-size: 0.8rem;
+            margin: 0;
+            padding: 0;
+            line-height: 1.3;
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            height: 100%;
+        }
+
+        .nav-item {
+            padding: 6px 12px;
+            font-size: 0.9rem;
+            height: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item i {
+            font-size: 1rem;
+        }
+
+        /* Mobile sidebar menu styles */
+        .mobile-menu-btn {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .sidebar-menu {
+            position: fixed;
+            top: 0;
+            right: -280px;
+            width: 280px;
+            height: 100%;
+            background: linear-gradient(145deg, #FFF5E6, #FFE5CC);
+            border-left: 3px solid var(--secondary-color);
+            z-index: 1000;
+            padding: 80px 20px 30px;
+            overflow-y: auto;
+            transition: all 0.3s ease;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-menu.active {
+            right: 0;
+        }
+
+        .sidebar-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(139, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .sidebar-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--secondary-color);
+            margin-right: 10px;
+        }
+
+        .close-sidebar {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-sidebar:hover {
+            color: var(--secondary-color);
+            transform: rotate(90deg);
+        }
+
+        .sidebar-menu .nav-item {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 5px;
+            border-radius: 8px;
+            font-size: 1rem;
+            border-bottom: 1px solid rgba(139, 0, 0, 0.05);
+        }
+
+        .sidebar-menu .nav-item i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+            min-width: 25px;
+            text-align: center;
+        }
+
+        .sidebar-menu .donate-btn,
+        .sidebar-menu .donations-btn {
+            margin-top: 10px;
+            justify-content: center;
+        }
+
+        .sidebar-footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-color);
+            padding-top: 20px;
+            border-top: 1px solid rgba(139, 0, 0, 0.1);
+        }
+
+        .om-symbol-sidebar {
+            display: block;
+            font-size: 2rem;
+            text-align: center;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        /* For smaller screens */
+        @media (max-width: 992px) {
+            .logo {
+                height: 40px;
+                width: 40px;
+            }
+            
+            .temple-name h1 {
+                font-size: 1.3rem;
+            }
+            
+            .temple-full-name {
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .logo-container {
+                padding: 5px 10px;
+            }
+            
+            .logo {
+                height: 35px;
+                width: 35px;
+            }
+            
+            .temple-name h1 {
+                font-size: 1.2rem;
+            }
+            
+            .temple-full-name {
+                font-size: 0.7rem;
+            }
+        }
+
+        /* Hero Section Styles */
+        .hero {
+            position: relative;
+            height: 80vh;
+            min-height: 500px;
+            overflow: hidden;
+            margin-top: 65px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+            width: 90%;
+            max-width: 800px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .cta-button:hover {
+            background: white;
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .hero-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -40%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 70vh;
+                min-height: 400px;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Location Section Styles */
+        .location-section {
+            padding: 60px 20px;
+            background: #fff;
+        }
+
+        .map-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 30px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .location-details {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding: 0 20px;
+        }
+
+        .address-card,
+        .contact-card {
+            flex: 1;
+            min-width: 280px;
+            max-width: 400px;
+            padding: 25px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .address-card:hover,
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .address-card i,
+        .contact-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .address-card h3,
+        .contact-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .address-card p,
+        .contact-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .location-details {
+                gap: 20px;
+            }
+
+            .address-card,
+            .contact-card {
+                min-width: 100%;
+            }
+
+            .map-container {
+                height: 300px;
+            }
+
+            .map-container iframe {
+                height: 100%;
+            }
+        }
+
+        .quick-actions {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 0 auto;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .action-card {
+            flex: 1;
+            min-width: 280px;
+            max-width: 400px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(139, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .action-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .action-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(139, 0, 0, 0.15);
+        }
+
+        .action-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .action-card:hover i {
+            transform: scale(1.1);
+            color: var(--secondary-color);
+        }
+
+        .action-card h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .action-card p {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .action-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 3px 10px rgba(139, 0, 0, 0.1);
+        }
+
+        .action-btn:hover {
+            background: white;
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .donate-card {
+            background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+            border: none;
+        }
+
+        .donate-card h3,
+        .donate-card p {
+            color: white;
+        }
+
+        .donate-card i {
+            color: white;
+        }
+
+        .donate-card::before {
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+        }
+
+        .donate-action-btn {
+            background: #FFD700;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .donate-action-btn:hover {
+            background: white;
+            color: var(--primary-color);
+            border-color: #FFD700;
+        }
+
+        @media (max-width: 768px) {
+            .quick-actions {
+                gap: 20px;
+                padding: 0 15px;
+            }
+
+            .action-card {
+                min-width: 100%;
+                padding: 25px;
+            }
+
+            .action-btn {
+                width: 100%;
+            }
+
+            .dashboard-header .om-symbol {
+                font-size: 2rem;
+            }
+
+            .dashboard-header h2 {
+                font-size: 1.6rem;
+            }
+        }
+
+        .dashboard-section {
+            padding: 60px 20px;
+            background: linear-gradient(rgba(255, 245, 230, 0.9), rgba(255, 245, 230, 0.9)), url('assets/temple-pattern.png');
+            margin-bottom: 40px;
+        }
+
+        .events-section {
+            padding: 60px 20px;
+            background: #fff;
+            margin-bottom: 40px;
+        }
+
+        .gallery-section {
+            padding: 60px 20px;
+            background: linear-gradient(rgba(255, 245, 230, 0.9), rgba(255, 245, 230, 0.9)), url('assets/temple-pattern.png');
+            margin-bottom: 40px;
+        }
+
+        .profile-section {
+            padding: 60px 20px;
+            background: #fff;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-section,
+            .events-section,
+            .gallery-section,
+            .profile-section {
+                padding: 40px 15px;
+                margin-bottom: 30px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+            }
+
+            .quick-actions {
+                flex-direction: column;
+                gap: 25px;
+                padding: 0 15px;
+            }
+
+            .action-card {
+                width: 100%;
+                max-width: none;
+                padding: 30px 20px;
+            }
+
+            .action-card i {
+                font-size: 2.2rem;
+                margin-bottom: 15px;
+            }
+
+            .action-card h3 {
+                font-size: 1.4rem;
+                margin-bottom: 12px;
+            }
+
+            .action-card p {
+                font-size: 1rem;
+                margin-bottom: 20px;
+                line-height: 1.4;
+            }
+
+            .action-btn {
+                width: 100%;
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+
+            .dashboard-header {
+                margin-bottom: 25px;
+            }
+
+            .dashboard-header .om-symbol {
+                font-size: 2rem;
+                margin-bottom: 12px;
+            }
+
+            .dashboard-header h2 {
+                font-size: 1.6rem;
+                margin-bottom: 6px;
+            }
+
+            .dashboard-header p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Add these styles to your existing CSS */
+        .profile-details .info-group {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-bottom: 1px solid rgba(139, 0, 0, 0.1);
+        }
+
+        .profile-details .info-group label {
+            font-weight: 500;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .profile-details .info-group p {
+            color: var(--text-color);
+            margin: 0;
+        }
+
+        .edit-profile-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .edit-profile-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='frontfest.jpg') }}" alt="Temple Logo" class="logo">
+                <div class="temple-name">
+                    <h1>JAI SRI RAM</h1>
+                    <p class="temple-full-name">Sri Sitaramachandra Lakshmana Sametha Anjaneya Swami Temple</p>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="#dashboard" class="nav-item"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="#gallery" class="nav-item"><i class="fas fa-images"></i> Gallery</a>
+                <a href="#events" class="nav-item"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="{{ url_for('slokas_and_songs') }}" class="nav-item"><i class="fas fa-book"></i> Slokas & Songs</a>
+                <a href="#profile" class="nav-item"><i class="fas fa-user"></i> Profile</a>
+                <a href="{{ url_for('donate') }}" class="nav-item donate-btn"><i class="fas fa-hand-holding-heart"></i> Donate</a>
+                <a href="{{ url_for('donaters') }}" class="nav-item donations-btn"><i class="fas fa-gift"></i> Donaters</a>
+                <a href="{{ url_for('home') }}" class="nav-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Sidebar Menu -->
+    <div class="sidebar-overlay"></div>
+    <div class="sidebar-menu">
+        <div class="sidebar-header">
+            <img src="{{ url_for('static', filename='frontfest.jpg') }}" alt="Temple Logo" class="sidebar-logo">
+            <div class="temple-name">
+                <h1>JAI SRI RAM</h1>
+            </div>
+            <div class="close-sidebar">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="om-symbol-sidebar">॥ ॐ ॥</div>
+        <a href="#dashboard" class="nav-item"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="#gallery" class="nav-item"><i class="fas fa-images"></i> Gallery</a>
+                <a href="#events" class="nav-item"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="{{ url_for('slokas_and_songs') }}" class="nav-item"><i class="fas fa-book"></i> Slokas & Songs</a>
+                <a href="#profile" class="nav-item"><i class="fas fa-user"></i> Profile</a>
+                <a href="{{ url_for('donate') }}" class="nav-item donate-btn"><i class="fas fa-hand-holding-heart"></i> Donate</a>
+                <a href="{{ url_for('donaters') }}" class="nav-item donations-btn"><i class="fas fa-gift"></i> Donaters</a>
+                <a href="{{ url_for('home') }}" class="nav-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <div class="sidebar-footer">
+            <p>Sri Sitaramachandra Lakshmana Sametha Anjaneya Swami Temple</p>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Sri Sitaramachandra Lakshmana Sametha Anjaneya Swami Temple</h1>
+                <p>Ulavapalla, 524152<br>Andhra Pradesh</p>
+            </div>
+            <div class="hero-slideshow">
+                <div class="hero-slide active" style="background-image: url('{{ url_for('static', filename='frontfest.jpg') }}');"></div>
+                <div class="hero-slide" style="background-image: url('{{ url_for('static', filename='temple-side.jpg') }}');"></div>
+            </div>
+        </section>
+
+        <main class="main-content">
+            <section id="dashboard" class="dashboard-section">
+                <div class="dashboard-header">
+                    <div class="om-symbol">॥ ॐ ॥</div>
+                    <h2>Welcome, Devotee</h2>
+                    <p>May Lord Rama's blessings be with you</p>
+                </div>
+
+                <div class="quick-actions">
+                    <div class="action-card">
+                        <i class="fas fa-gift"></i>
+                        <h3>Recent Donaters</h3>
+                        <p>View our generous temple donors who have contributed to the temple's development</p>
+                        <a href="{{ url_for('donaters') }}" class="action-btn">View Donaters</a>
+                    </div>
+                    <div class="action-card donate-card">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <h3>Make Donation</h3>
+                        <p>Support temple activities and contribute to its growth</p>
+                        <a href="{{ url_for('donate') }}" class="action-btn donate-action-btn">Donate Now</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="events" class="events-section">
+                <h2 class="section-title">Upcoming Events</h2>
+                <div class="events-grid">
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="date">15</span>
+                            <span class="month">APR</span>
+                        </div>
+                        <div class="event-details">
+                            <h3>Sri Rama Navami</h3>
+                            <p><i class="fas fa-clock"></i> 6:00 AM - 9:00 PM</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Main Temple</p>
+                        </div>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="date">23</span>
+                            <span class="month">APR</span>
+                        </div>
+                        <div class="event-details">
+                            <h3>Hanuman Jayanti</h3>
+                            <p><i class="fas fa-clock"></i> 5:00 AM - 8:00 PM</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Anjaneya Temple</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="gallery" class="gallery-section">
+                <h2 class="section-title">Temple Gallery</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="{{ url_for('static', filename='first.jpeg') }}" alt="Temple Front View">
+                        <div class="gallery-overlay">
+                            <p>Temple Front View</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="{{ url_for('static', filename='sec.jpeg') }}" alt="Temple Interior">
+                        <div class="gallery-overlay">
+                            <p>Temple Interior</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="{{ url_for('static', filename='third.jpeg') }}" alt="Temple Festival">
+                        <div class="gallery-overlay">
+                            <p>Temple Festival</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="profile" class="profile-section">
+                <h2 class="section-title">Your Profile</h2>
+                <div class="profile-container">
+                    <div class="profile-info">
+                        <div class="profile-header">
+                            <i class="fas fa-user-circle"></i>
+                            <h3>Devotee Profile</h3>
+                        </div>
+                        <div class="profile-details">
+                            {% if user %}
+                            <div class="info-group">
+                                <label>Username:</label>
+                                <p>{{ user.username }}</p>
+                            </div>
+                            <div class="info-group">
+                                <label>Mobile Number:</label>
+                                <p>{{ user.mobile_number }}</p>
+                            </div>
+                            {% else %}
+                            <div class="info-group">
+                                <p>Please sign in to view your profile</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% if user %}
+                        <button class="edit-profile-btn">Edit Profile</button>
+                        {% endif %}
+                    </div>
+                    {% if user %}
+                    <div class="activity-history">
+                        <h3>Recent Activities</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <i class="fas fa-user-check"></i>
+                                <div class="activity-details">
+                                    <p>Profile Created</p>
+                                    <span>Member since {{ user.created_at|default('2024') }}</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-sign-in-alt"></i>
+                                <div class="activity-details">
+                                    <p>Last Login</p>
+                                    <span>Active Now</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </section>
+
+            <!-- Map Section -->
+            <section id="location" class="location-section">
+                <h2 class="section-title">Our Location</h2>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3858.8436832143837!2d80.0227633!3d14.7241389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4c7c2a2c6a0001%3A0x4c6a0001a6d7b8a1!2sUlavapalli%2C%20Andhra%20Pradesh%20524152!5e0!3m2!1sen!2sin!4v1647901234567!5m2!1sen!2sin"
+                        width="100%" 
+                        height="450" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+                <div class="location-details">
+                    <div class="address-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Address</h3>
+                        <p>Sri Sitaramachandra Lakshmana Sametha Anjaneya Swami Temple<br>
+                        Ulavapalla, 524152<br>
+                        Andhra Pradesh</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Contact</h3>
+                        <p>Temple Office: +91 7893419616<br>
+                        Email: info@seetharamatemple.com</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Sri Sitaramach Lakshmana Sametha Anjaneya Swami Temple. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Handle smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close sidebar when a menu item is clicked
+                    if (document.querySelector('.sidebar-menu').classList.contains('active')) {
+                        toggleSidebar();
+                    }
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile sidebar functionality
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar-menu');
+            const overlay = document.querySelector('.sidebar-overlay');
+            
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+        }
+        
+        // Event listeners for sidebar
+        document.querySelector('.mobile-menu-btn').addEventListener('click', toggleSidebar);
+        document.querySelector('.close-sidebar').addEventListener('click', toggleSidebar);
+        document.querySelector('.sidebar-overlay').addEventListener('click', toggleSidebar);
+        
+        // Close sidebar when clicking outside
+        document.addEventListener('click', function(e) {
+            const sidebar = document.querySelector('.sidebar-menu');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (sidebar.classList.contains('active') && 
+                !sidebar.contains(e.target) && 
+                !mobileMenuBtn.contains(e.target)) {
+                toggleSidebar();
+            }
+        });
+
+        // Hero Slideshow
+        function initSlideshow() {
+            const slides = document.querySelectorAll('.hero-slide');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                slides[index].classList.add('active');
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            // Change slide every 5 seconds
+            setInterval(nextSlide, 5000);
+        }
+
+        // Initialize slideshow
+        initSlideshow();
+    </script>
+</body>
+</html>

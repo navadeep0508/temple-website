@@ -1,0 +1,329 @@
+/* Temple-themed variables */
+:root {
+    --primary-color: #8B0000; /* Deep Red */
+    --secondary-color: #DAA520; /* Golden */
+    --text-color: #333;
+    --light-bg: #FFF5E6; /* Warm Light */
+    --accent-color: #CD853F; /* Golden Brown */
+    --border-color: #DAA520; /* Golden */
+    --input-bg: rgba(255, 255, 255, 0.95);
+    --transition-speed: 0.3s;
+}
+
+.signup-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #FFF5E6, #FFE5CC);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('assets/temple-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.signup-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 245, 230, 0.92);
+    backdrop-filter: blur(8px);
+}
+
+.signup-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    z-index: 1;
+}
+
+.back-btn {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    color: var(--primary-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    transition: transform var(--transition-speed) ease;
+}
+
+.back-btn:hover {
+    color: var(--secondary-color);
+    transform: translateX(-5px);
+}
+
+.signup-box {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 245, 230, 0.95));
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(139, 0, 0, 0.15);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.signup-box.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.temple-border {
+    position: relative;
+    padding: 3rem 2rem;
+    background: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23daa520' fill-opacity='0.1'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.temple-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid var(--border-color);
+    border-radius: 15px;
+    margin: 1rem;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.signup-content {
+    position: relative;
+    z-index: 1;
+}
+
+.welcome-text {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.welcome-text::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--border-color), var(--primary-color), var(--border-color));
+}
+
+.signup-form {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid rgba(218, 165, 32, 0.3);
+    border-radius: 10px;
+    background-color: var(--input-bg);
+    transition: all var(--transition-speed) ease;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.2);
+}
+
+.password-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.toggle-password {
+    color: var(--primary-color);
+    opacity: 0.7;
+    cursor: pointer;
+    transition: color var(--transition-speed) ease;
+}
+
+.toggle-password:hover {
+    color: var(--secondary-color);
+    opacity: 1;
+}
+
+.signup-btn {
+    background: linear-gradient(135deg, var(--primary-color), #A52A2A);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.signup-btn:hover {
+    background: linear-gradient(135deg, #A52A2A, var(--primary-color));
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(139, 0, 0, 0.3);
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--text-color);
+}
+
+.signin-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color var(--transition-speed) ease;
+}
+
+.signin-link:hover {
+    color: var(--secondary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .signup-container {
+        padding: 1rem;
+    }
+
+    .temple-border {
+        padding: 2rem 1.5rem;
+    }
+
+    .welcome-text {
+        font-size: 1.8rem;
+    }
+}
+
+/* Animations */
+@keyframes borderGlow {
+    0% {
+        box-shadow: 0 0 5px var(--secondary-color);
+    }
+    50% {
+        box-shadow: 0 0 20px var(--secondary-color);
+    }
+    100% {
+        box-shadow: 0 0 5px var(--secondary-color);
+    }
+}
+
+.form-group input:focus {
+    animation: borderGlow 2s infinite;
+}
+
+/* Temple Corner Decorations */
+.temple-border::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border: 3px solid var(--border-color);
+    border-radius: 0 0 0 15px;
+    top: 15px;
+    right: 15px;
+    border-left: none;
+    border-bottom: none;
+    opacity: 0.7;
+}
+
+/* Add Om symbol decoration */
+.welcome-text::before {
+    content: '॥ ॐ ॥';
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    letter-spacing: 5px;
+}
+
+/* Back navigation styles */
+.back-nav {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 10;
+}
+
+.back-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--primary-color), #A52A2A);
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(139, 0, 0, 0.2);
+    border: 2px solid rgba(218, 165, 32, 0.5);
+}
+
+.back-arrow:hover {
+    transform: scale(1.1) translateX(-3px);
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    box-shadow: 0 6px 12px rgba(139, 0, 0, 0.3);
+    border-color: var(--secondary-color);
+}
+
+.back-arrow i {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.back-arrow:hover i {
+    transform: translateX(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .back-nav {
+        top: 12px;
+        left: 12px;
+    }
+    
+    .back-arrow {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .back-arrow i {
+        font-size: 0.9rem;
+    }
+} 

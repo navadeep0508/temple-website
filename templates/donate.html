@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - Sri Seetharama Temple</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .back-nav {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+
+        .back-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-right: 15px;
+        }
+
+        .back-arrow:hover {
+            transform: scale(1.1);
+            background: var(--secondary-color);
+        }
+
+        .back-arrow i {
+            font-size: 1rem;
+        }
+
+        .logo-container {
+            margin-left: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .back-nav {
+                left: 10px;
+            }
+            
+            .back-arrow {
+                width: 30px;
+                height: 30px;
+                margin-right: 10px;
+            }
+
+            .logo-container {
+                margin-left: 45px;
+            }
+        }
+
+        .donate-section {
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(rgba(255, 245, 230, 0.9), rgba(255, 245, 230, 0.9)), url('assets/temple-pattern.png');
+        }
+
+        .donate-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .donate-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .bank-info, .donation-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(139, 0, 0, 0.1);
+        }
+
+        .bank-info {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bank-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(135deg, var(--primary-color), #A52A2A);
+        }
+
+        .bank-info h2, .donation-form h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .bank-details {
+            margin-bottom: 2rem;
+        }
+
+        .bank-detail-item {
+            display: flex;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background: rgba(255, 245, 230, 0.5);
+            border-radius: 8px;
+        }
+
+        .bank-detail-item strong {
+            min-width: 150px;
+            color: var(--primary-color);
+        }
+
+        .donation-form form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea {
+            padding: 0.8rem;
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            border-radius: 8px;
+            font-family: inherit;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .file-upload {
+            margin-top: 1rem;
+        }
+
+        .file-upload label {
+            display: block;
+            padding: 1rem;
+            background: rgba(218, 165, 32, 0.1);
+            border: 2px dashed rgba(218, 165, 32, 0.3);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-upload label:hover {
+            background: rgba(218, 165, 32, 0.2);
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-color), #A52A2A);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .qr-code {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .qr-code img {
+            max-width: 200px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+            font-family: inherit;
+            padding: 0.8rem;
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            border-radius: 8px;
+        }
+
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="back-nav">
+                <a href="{{ url_for('homepage') }}" class="back-arrow">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+            </div>
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='frontfest.jpg') }}" alt="Temple Logo" class="logo">
+                <div class="temple-name">
+                    <h1>JAI SRI RAM</h1>
+                    <p class="temple-full-name">Sri Seetharama Lakshmana Sametha Anjaneya Swami Temple</p>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="{{ url_for('homepage') }}" class="nav-item"><i class="fas fa-home"></i> Home</a>
+                <a href="{{ url_for('donaters') }}" class="nav-item"><i class="fas fa-gift"></i> Donaters</a>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <section class="donate-section">
+        <div class="donate-container">
+            <div class="bank-info">
+                <h2><i class="fas fa-university"></i> Bank Details</h2>
+                <div class="bank-details">
+                    <div class="bank-detail-item">
+                        <strong>Account Name:</strong>
+                        <span>KOVURU SREEDHAR</span>
+                    </div>
+                    <div class="bank-detail-item">
+                        <strong>Bank Name:</strong>
+                        <span>ANDHRA PRAGATHI GRAMEENA BANK</span>
+                    </div>
+                    <div class="bank-detail-item">
+                        <strong>Account Number:</strong>
+                        <span> 91184361980</span>
+                    </div>
+                    <div class="bank-detail-item">
+                        <strong>IFSC Code:</strong>
+                        <span>APGB0004039</span>
+                    </div>
+                    <div class="bank-detail-item">
+                        <strong>Branch:</strong>
+                        <span>ALLUR,ALLUR MANDAL,DIST-NELLORE.</span>
+                    </div>
+                </div>
+                <div class="qr-code">
+                    <h3>Scan QR Code to Pay</h3>
+                    <img src="{{ url_for('static', filename='assets/qr-code.png') }}" alt="Payment QR Code">
+                </div>
+            </div>
+
+            <div class="donation-form">
+                <h2><i class="fas fa-hand-holding-heart"></i> Donation Details</h2>
+                <form id="donationForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="full_name">Full Name *</label>
+                        <input type="text" id="full_name" name="full_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address *</label>
+                        <textarea id="address" name="address" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="utr">UTR Number *</label>
+                        <input type="text" id="utr" name="utr" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Donation Amount (₹) *</label>
+                        <input type="number" id="amount" name="amount" min="1" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit Donation</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Sri Seetharama Lakshman Sametha Anjaneya Swami Temple. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+
+        // File upload preview
+        document.getElementById('screenshot').addEventListener('change', function(e) {
+            const fileName = e.target.files[0]?.name;
+            if (fileName) {
+                this.previousElementSibling.querySelector('span').textContent = fileName;
+            }
+        });
+
+        // Form submission handler
+        async function handleSubmit(event) {
+            event.preventDefault();
+            
+            const formData = {
+                full_name: document.getElementById('full_name').value,
+                address: document.getElementById('address').value,
+                utr: document.getElementById('utr').value,
+                amount: document.getElementById('amount').value
+            };
+
+            try {
+                const response = await fetch('{{ url_for("donate") }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    window.location.href = '{{ url_for("homepage") }}';
+                } else if (response.status === 401) {
+                    window.location.href = '{{ url_for("signin") }}';
+                }
+            } catch (error) {
+                window.location.href = '{{ url_for("homepage") }}';
+            }
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
