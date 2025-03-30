@@ -1,6 +1,6 @@
-# Sri Sitaramachandra Temple Website
+# Sri Kodandarama swami Temple Website
 
-A web application for Sri Sitaramachandra Lakshmana Sametha Anjaneya Swami Temple built with Flask.
+A web application for Sri Kodandarama swami Temple built with Flask.
 
 ## Features
 
