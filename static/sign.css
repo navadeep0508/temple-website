@@ -109,7 +109,6 @@
 }
 
 .welcome-text::before {
-    content: 'ॐ';
     position: absolute;
     top: -40px;
     left: 50%;
