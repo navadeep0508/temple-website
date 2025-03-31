@@ -291,6 +291,7 @@
 
             .logo-container {
                 padding: 5px 10px;
+                gap: 10px;
             }
             
             .logo {
@@ -298,12 +299,21 @@
                 width: 35px;
             }
             
+            .temple-name {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+            }
+            
             .temple-name h1 {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
+                line-height: 1.2;
             }
             
             .temple-full-name {
-                font-size: 0.7rem;
+                font-size: 0.65rem;
+                line-height: 1.2;
+                display: block;
             }
         }
 
@@ -789,6 +799,185 @@
             background: var(--secondary-color);
             transform: translateY(-2px);
         }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            color: white;
+            padding: 20px 10px;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-overlay p {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .timestamp {
+            display: none;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Slideshow styles */
+        .slideshow-container {
+            position: relative;
+        }
+
+        .gallery-slides {
+            position: relative;
+            height: 100%;
+        }
+
+        .slide {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 28px;
+            transition: all 0.3s ease;
+            border-radius: 50%;
+            user-select: none;
+            cursor: pointer;
+            z-index: 2;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .prev:hover, .next:hover {
+            color: #FFD700;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            color: white;
+            padding: 20px 10px;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-overlay p {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .timestamp {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            z-index: 2;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .dots-container {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .dot {
+            height: 10px;
+            width: 10px;
+            margin: 0 4px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+            cursor: pointer;
+        }
+
+        .dot.active, .dot:hover {
+            background-color: white;
+        }
+
+        .fade {
+            animation-name: fade;
+            animation-duration: 1s;
+        }
+
+        @keyframes fade {
+            from {opacity: 0.4}
+            to {opacity: 1}
+        }
     </style>
 </head>
 <body>
@@ -885,7 +1074,7 @@
                 <div class="events-grid">
                     <div class="event-card">
                         <div class="event-date">
-                            <span class="date">15</span>
+                            <span class="date">06</span>
                             <span class="month">APR</span>
                         </div>
                         <div class="event-details">
@@ -902,7 +1091,7 @@
                         <div class="event-details">
                             <h3>Hanuman Jayanti</h3>
                             <p><i class="fas fa-clock"></i> 5:00 AM - 8:00 PM</p>
-                            <p><i class="fas fa-map-marker-alt"></i> Anjaneya Temple</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Sri Kodandarama Swami Temple</p>
                         </div>
                     </div>
                 </div>
@@ -911,22 +1100,78 @@
             <section id="gallery" class="gallery-section">
                 <h2 class="section-title">Temple Gallery</h2>
                 <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="{{ url_for('static', filename='first.jpeg') }}" alt="Temple Front View">
+                    <div class="gallery-item slideshow-container">
+                        <div class="gallery-slides">
+                            <div class="slide fade active">
+                                <img src="{{ url_for('static', filename='first.jpeg') }}" alt="Temple Front View">
+                            </div>
+                            <div class="slide fade">
+                                <img src="{{ url_for('static', filename='siva side temple full view.jpg') }}" alt="Siva Side Temple">
+                            </div>
+                            <div class="slide fade">
+                                <img src="{{ url_for('static', filename='sunrise back side vishnu temple.jpg') }}" alt="Sunrise Back Side">
+                            </div>
+                            <div class="slide fade">
+                                <img src="{{ url_for('static', filename='temple front ramasametha.jpg') }}" alt="Temple Front Ramasametha">
+                            </div>
+                            <div class="slide fade">
+                                <img src="{{ url_for('static', filename='little low angle front view.jpg') }}" alt="Low Angle Front View">
+                            </div>
+                            <div class="slide fade">
+                                <img src="{{ url_for('static', filename='sunrise interior side view vishnu.jpg') }}" alt="Sunrise Interior Side View Vishnu">
+                            </div>
+                            <div class="slide fade">
+                                <img src="{{ url_for('static', filename='side view with tree.jpg') }}" alt="Side View with Tree">
+                            </div>
+                            <a class="prev" onclick="changeSlide(-1, 0)">❮</a>
+                            <a class="next" onclick="changeSlide(1, 0)">❯</a>
+                            <div class="dots-container">
+                                <span class="dot" onclick="currentSlide(1, 0)"></span>
+                                <span class="dot" onclick="currentSlide(2, 0)"></span>
+                                <span class="dot" onclick="currentSlide(3, 0)"></span>
+                                <span class="dot" onclick="currentSlide(4, 0)"></span>
+                                <span class="dot" onclick="currentSlide(5, 0)"></span>
+                                <span class="dot" onclick="currentSlide(6, 0)"></span>
+                                <span class="dot" onclick="currentSlide(7, 0)"></span>
+                            </div>
+                        </div>
                         <div class="gallery-overlay">
-                            <p>Temple Front View</p>
+                            <p>Temple Views • <span class="view-count">1/7</span></p>
                         </div>
                     </div>
-                    <div class="gallery-item">
-                        <img src="{{ url_for('static', filename='sec.jpeg') }}" alt="Temple Interior">
-                        <div class="gallery-overlay">
-                            <p>Temple Interior</p>
+                    <div class="gallery-item slideshow-container">
+                        <div class="gallery-slides">
+                            <div class="slide fade active">
+                                <img src="{{ url_for('static', filename='back ramasametha full view.jpg') }}" alt="Back Ramasametha Full View">
+                            </div>
+                            <div class="slide fade">
+                                <img src="{{ url_for('static', filename='rama holding sita hand.jpg') }}" alt="Rama Holding Sita Hand">
+                            </div>
+                            <div class="slide fade">
+                                <img src="{{ url_for('static', filename='sri siva parvathi sametha.jpg') }}" alt="Sri Siva Parvathi Sametha">
+                            </div>
+                            <div class="slide fade">
+                                <img src="{{ url_for('static', filename='sri vishnu sametha.jpg') }}" alt="Sri Vishnu Sametha">
+                            </div>
+                            <div class="slide fade">
+                                <img src="{{ url_for('static', filename='temple arch interior.jpg') }}" alt="Temple Arch Interior">
+                            </div>
+                            <div class="slide fade">
+                                <img src="{{ url_for('static', filename='temple arch interior fan.jpg') }}" alt="Temple Arch Interior Fan">
+                            </div>
+                            <a class="prev" onclick="changeSlide(-1, 1)">❮</a>
+                            <a class="next" onclick="changeSlide(1, 1)">❯</a>
+                            <div class="dots-container">
+                                <span class="dot" onclick="currentSlide(1, 1)"></span>
+                                <span class="dot" onclick="currentSlide(2, 1)"></span>
+                                <span class="dot" onclick="currentSlide(3, 1)"></span>
+                                <span class="dot" onclick="currentSlide(4, 1)"></span>
+                                <span class="dot" onclick="currentSlide(5, 1)"></span>
+                                <span class="dot" onclick="currentSlide(6, 1)"></span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="{{ url_for('static', filename='third.jpeg') }}" alt="Temple Festival">
                         <div class="gallery-overlay">
-                            <p>Temple Festival</p>
+                            <p>Temple Interior • <span class="view-count-2">1/6</span></p>
                         </div>
                     </div>
                 </div>
@@ -956,9 +1201,6 @@
                             </div>
                             {% endif %}
                         </div>
-                        {% if user %}
-                        <button class="edit-profile-btn">Edit Profile</button>
-                        {% endif %}
                     </div>
                     {% if user %}
                     <div class="activity-history">
@@ -1099,6 +1341,55 @@
 
         // Initialize slideshow
         initSlideshow();
+
+        let slideIndex = [1, 1];
+        let slideTimer = [null, null];
+        showSlides(1, 0);
+        showSlides(1, 1);
+
+        function resetSlideTimer(no) {
+            // Clear existing timer
+            if (slideTimer[no]) {
+                clearInterval(slideTimer[no]);
+            }
+            // Start new timer
+            slideTimer[no] = setInterval(() => {
+                changeSlide(1, no);
+            }, 5000);
+        }
+
+        function changeSlide(n, no) {
+            showSlides(slideIndex[no] += n, no);
+            resetSlideTimer(no); // Reset timer when manually changing slides
+        }
+
+        function currentSlide(n, no) {
+            showSlides(slideIndex[no] = n, no);
+            resetSlideTimer(no); // Reset timer when directly selecting a slide
+        }
+
+        function showSlides(n, no) {
+            const slideshows = document.querySelectorAll('.gallery-slides');
+            const slides = slideshows[no].querySelectorAll('.slide');
+            const dots = slideshows[no].querySelectorAll('.dot');
+            const viewCount = no === 0 ? document.querySelector('.view-count') : document.querySelector('.view-count-2');
+            
+            if (n > slides.length) {slideIndex[no] = 1}
+            if (n < 1) {slideIndex[no] = slides.length}
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[slideIndex[no]-1].classList.add('active');
+            dots[slideIndex[no]-1].classList.add('active');
+            
+            // Update view count
+            viewCount.textContent = `${slideIndex[no]}/${slides.length}`;
+        }
+
+        // Initialize both timers
+        resetSlideTimer(0);
+        resetSlideTimer(1);
     </script>
 </body>
 </html>
