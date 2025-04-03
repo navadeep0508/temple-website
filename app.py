@@ -110,16 +110,20 @@ def donaters():
         # Get donations from donators table
         donations_response = supabase.table('donators').select('*').execute()
         
-        # Get data from the manual donors table (assuming table name is 'manual_donors')
+        # Get data from the manual donors table
         manual_donors_response = supabase.table('manual_donors').select('*').execute()
+        
+        # Get data from the priest donors table
+        priest_donors_response = supabase.table('priest_donors').select('*').execute()
         
         return render_template("donaters.html", 
                              donations=donations_response.data,
-                             manual_donors=manual_donors_response.data)
+                             manual_donors=manual_donors_response.data,
+                             priest_donors=priest_donors_response.data)
         
     except Exception as e:
         print("Error:", str(e))
-        return render_template("donaters.html", donations=[], manual_donors=[])
+        return render_template("donaters.html", donations=[], manual_donors=[], priest_donors=[])
 
 @app.route("/slokas_and_songs")
 def slokas_and_songs():
