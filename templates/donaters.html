@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donators - Sri Sitaramachandra Lakshmana Sametha Anjaneya Swami Temple</title>
+    <title>Donators - Sri Kodandarama Swami Temple</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -193,6 +193,166 @@
         .donators-section + .donators-section {
             margin-top: 2rem;
         }
+
+        .sidebar-menu {
+            position: fixed;
+            top: 0;
+            right: -280px;
+            width: 280px;
+            height: 100%;
+            background: linear-gradient(145deg, #FFF5E6, #FFE5CC);
+            border-left: 3px solid var(--secondary-color);
+            z-index: 1000;
+            padding: 80px 20px 30px;
+            overflow-y: auto;
+            transition: all 0.3s ease;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-menu.active {
+            right: 0;
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .close-sidebar {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-sidebar:hover {
+            color: var(--secondary-color);
+            transform: rotate(90deg);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                cursor: pointer;
+                font-size: 1.5rem;
+                color: var(--primary-color);
+                z-index: 1001;
+            }
+
+            .sidebar-menu .nav-item {
+                padding: 15px;
+                font-size: 1.1rem;
+                display: flex;
+                align-items: center;
+                width: 100%;
+                border-radius: 8px;
+                margin-bottom: 5px;
+                transition: all 0.3s ease;
+            }
+
+            .sidebar-menu .nav-item i {
+                margin-right: 15px;
+                font-size: 1.2rem;
+                width: 20px;
+                text-align: center;
+            }
+
+            .sidebar-menu .nav-item:active {
+                background: rgba(139, 0, 0, 0.1);
+                transform: scale(0.98);
+            }
+        }
+
+        .om-symbol-sidebar {
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 20px 0;
+            padding: 15px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 165, 0, 0.3);
+            border: 2px solid #FFF;
+            color: #8B0000;
+            font-family: 'Sanskrit Text', Arial, sans-serif;
+            transform: rotate(-5deg);
+            transition: all 0.3s ease;
+        }
+
+        .om-symbol-sidebar::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #FFD700, transparent);
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        .om-symbol-sidebar::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50%;
+            border: 2px solid rgba(139, 0, 0, 0.3);
+            z-index: -1;
+        }
+
+        .om-symbol-sidebar:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 165, 0, 0.4);
+            cursor: pointer;
+        }
+
+        @keyframes divine-glow {
+            0% {
+                box-shadow: 0 0 5px #FFD700;
+            }
+            50% {
+                box-shadow: 0 0 20px #FFA500;
+            }
+            100% {
+                box-shadow: 0 0 5px #FFD700;
+            }
+        }
+
+        .om-symbol-sidebar.glow {
+            animation: divine-glow 2s infinite;
+        }
     </style>
 </head>
 <body>
@@ -207,18 +367,37 @@
                 <img src="{{ url_for('static', filename='frontfest.jpg') }}" alt="Temple Logo" class="logo">
                 <div class="temple-name">
                     <h1>JAI SRI RAM</h1>
-                    <p class="temple-full-name">Sri Sitaramachandra Lakshmana Sametha Anjaneya Swami Temple</p>
+                    <p class="temple-full-name">Sri Kodandarama Swami Temple</p>
                 </div>
             </div>
             <div class="nav-links">
                 <a href="{{ url_for('homepage') }}" class="nav-item"><i class="fas fa-home"></i> Home</a>
-                <a href="#" class="nav-item"><i class="fas fa-user-tie"></i> Priest Donors</a>
+                <a href="#priest-donors" class="nav-item priest-donors-link"><i class="fas fa-user-tie"></i> Priest Donors</a>
             </div>
             <div class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </div>
         </nav>
     </header>
+
+    <!-- Add mobile sidebar menu -->
+    <div class="sidebar-overlay"></div>
+    <div class="sidebar-menu">
+        <div class="sidebar-header">
+            <img src="{{ url_for('static', filename='frontfest.jpg') }}" alt="Temple Logo" class="sidebar-logo">
+            <div class="temple-name">
+                <h1>JAI SRI RAM</h1>
+            </div>
+            <div class="close-sidebar">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="om-symbol-sidebar" title="॥ ॐ नमः शिवाय ॥">
+            ॐ
+        </div>
+        <a href="{{ url_for('homepage') }}" class="nav-item"><i class="fas fa-home"></i> Home</a>
+        <a href="#priest-donors" class="nav-item priest-donors-link"><i class="fas fa-user-tie"></i> Priest Donors</a>
+    </div>
 
     <section class="donators-section">
         <div class="donators-container">
@@ -284,33 +463,73 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-            this.classList.toggle('active');
-        });
+        // Mobile sidebar functionality
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar-menu');
+            const overlay = document.querySelector('.sidebar-overlay');
+            const omSymbol = document.querySelector('.om-symbol-sidebar');
+            
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+            
+            // Add glow effect when sidebar is open
+            if (sidebar.classList.contains('active')) {
+                omSymbol.classList.add('glow');
+            } else {
+                omSymbol.classList.remove('glow');
+            }
+            
+            document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+        }
 
-        // Active nav item
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', function() {
-                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
+        // Event listeners for sidebar
+        document.querySelector('.mobile-menu-btn').addEventListener('click', toggleSidebar);
+        document.querySelector('.close-sidebar')?.addEventListener('click', toggleSidebar);
+        document.querySelector('.sidebar-overlay')?.addEventListener('click', toggleSidebar);
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        // Enhanced smooth scrolling with offset for header
+        document.querySelectorAll('.priest-donors-link').forEach(link => {
+            link.addEventListener('click', function(e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    // Close sidebar if open
+                    const sidebar = document.querySelector('.sidebar-menu');
+                    if (sidebar.classList.contains('active')) {
+                        toggleSidebar();
+                    }
+
+                    // Calculate header height for offset
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
+
+        // Add active class to nav item when section is in view
+        function updateActiveNavItem() {
+            const priestDonorsSection = document.getElementById('priest-donors');
+            const navItem = document.querySelector('.priest-donors-link');
+            
+            if (priestDonorsSection) {
+                const rect = priestDonorsSection.getBoundingClientRect();
+                if (rect.top <= 100 && rect.bottom >= 100) {
+                    navItem.classList.add('active');
+                } else {
+                    navItem.classList.remove('active');
+                }
+            }
+        }
+
+        // Update active nav item on scroll
+        window.addEventListener('scroll', updateActiveNavItem);
 
         // Header scroll effect
         window.addEventListener('scroll', () => {
@@ -320,6 +539,18 @@
             } else {
                 header.classList.remove('scrolled');
             }
+        });
+
+        // Om symbol click effect
+        document.querySelector('.om-symbol-sidebar').addEventListener('click', function() {
+            const audio = new Audio('{{ url_for("static", filename="om-chant.mp3") }}');
+            audio.volume = 0.5;
+            audio.play().catch(e => console.log('Audio play failed:', e));
+            
+            this.style.transform = 'rotate(360deg) scale(1.1)';
+            setTimeout(() => {
+                this.style.transform = 'rotate(-5deg) scale(1)';
+            }, 1000);
         });
     </script>
 </body>

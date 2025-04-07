@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate - Sri Seetharama Temple</title>
+    <title>Donate - Sri Kodandarama Swami Temple</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -63,34 +63,49 @@
         }
 
         .donate-section {
-            padding: 8rem 2rem 4rem;
+            padding: 8rem 4rem 4rem;
             background: linear-gradient(rgba(255, 245, 230, 0.9), rgba(255, 245, 230, 0.9)), url('assets/temple-pattern.png');
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
 
         .donate-container {
-            max-width: 1200px;
+            max-width: 1400px;
+            width: 100%;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            padding: 0;
         }
 
-        @media (max-width: 768px) {
-            .donate-container {
-                grid-template-columns: 1fr;
-            }
+        .bank-info {
+            order: 0;
+        }
+
+        .donation-form {
+            order: 1;
         }
 
         .bank-info, .donation-form {
             background: white;
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(139, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            min-width: 400px;
         }
 
         .bank-info {
             position: relative;
             overflow: hidden;
+            border: 2px solid rgba(139, 0, 0, 0.1);
+            background: linear-gradient(145deg, #fff, #FFF5E6);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .bank-info::before {
@@ -105,116 +120,368 @@
 
         .bank-info h2, .donation-form h2 {
             color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .bank-info h2::after, .donation-form h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), #A52A2A);
+            border-radius: 2px;
         }
 
         .bank-details {
-            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 90%;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
         .bank-detail-item {
             display: flex;
-            margin-bottom: 1rem;
-            padding: 0.5rem;
-            background: rgba(255, 245, 230, 0.5);
-            border-radius: 8px;
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(139, 0, 0, 0.1);
+            width: 100%;
+            justify-content: center;
+        }
+
+        .bank-detail-item:hover {
+            background: rgba(255, 255, 255, 0.95);
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(139, 0, 0, 0.1);
         }
 
         .bank-detail-item strong {
-            min-width: 150px;
+            min-width: 200px;
             color: var(--primary-color);
+            font-weight: 600;
+            padding-right: 1rem;
+        }
+
+        .bank-detail-item span {
+            color: var(--text-color);
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .donation-form {
+            border: 2px solid rgba(139, 0, 0, 0.1);
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .donation-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(135deg, var(--primary-color), #A52A2A);
+        }
+
+        .donation-form h2 {
+            margin-bottom: 2.5rem;
         }
 
         .donation-form form {
-            display: grid;
-            gap: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
         }
 
         .form-group {
             display: flex;
             flex-direction: column;
+            gap: 0.8rem;
+            position: relative;
         }
 
         .form-group label {
-            margin-bottom: 0.5rem;
-            color: var(--text-color);
-            font-weight: 500;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .form-group input, .form-group textarea {
-            padding: 0.8rem;
-            border: 1px solid rgba(218, 165, 32, 0.3);
-            border-radius: 8px;
+        .form-group label i {
+            font-size: 1rem;
+            color: #A52A2A;
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            padding: 1rem 1.2rem;
+            border: 2px solid rgba(139, 0, 0, 0.1);
+            border-radius: 10px;
             font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+            color: var(--text-color);
         }
 
-        .form-group input:focus, .form-group textarea:focus {
+        .form-group input:hover, 
+        .form-group textarea:hover {
+            border-color: rgba(139, 0, 0, 0.3);
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
             outline: none;
             border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(139, 0, 0, 0.1);
         }
 
-        .file-upload {
-            margin-top: 1rem;
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
         }
 
-        .file-upload label {
-            display: block;
-            padding: 1rem;
-            background: rgba(218, 165, 32, 0.1);
-            border: 2px dashed rgba(218, 165, 32, 0.3);
-            border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .file-upload label:hover {
-            background: rgba(218, 165, 32, 0.2);
-        }
-
-        .file-upload input[type="file"] {
-            display: none;
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #999;
         }
 
         .submit-btn {
             background: linear-gradient(135deg, var(--primary-color), #A52A2A);
             color: white;
-            padding: 1rem;
+            padding: 1.2rem;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 1.1rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
         }
 
         .submit-btn:hover {
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 0, 0, 0.2);
         }
 
-        .qr-code {
-            margin-top: 2rem;
-            text-align: center;
+        .submit-btn:active {
+            transform: translateY(0);
         }
 
-        .qr-code img {
-            max-width: 200px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
         }
 
-        .form-group textarea {
-            resize: vertical;
-            min-height: 80px;
-            font-family: inherit;
-            padding: 0.8rem;
-            border: 1px solid rgba(218, 165, 32, 0.3);
-            border-radius: 8px;
+        .submit-btn:hover::before {
+            left: 100%;
         }
 
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
+        /* Tablet Breakpoint */
+        @media (max-width: 1200px) {
+            .donate-section {
+                padding: 8rem 2rem 4rem;
+            }
+            
+            .donate-container {
+                gap: 3rem;
+            }
+
+            .bank-info, .donation-form {
+                min-width: 350px;
+                padding: 2rem;
+            }
+
+            .bank-info h2, 
+            .donation-form h2 {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* Mobile Landscape Breakpoint */
+        @media (max-width: 992px) {
+            .donate-section {
+                padding: 7rem 1.5rem 3rem;
+                min-height: auto;
+            }
+
+            .donate-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .bank-info {
+                margin-bottom: 1rem;
+            }
+
+            .bank-info, .donation-form {
+                max-width: 600px;
+                min-width: unset;
+                width: 100%;
+                padding: 1.8rem;
+            }
+
+            .bank-info h2, 
+            .donation-form h2 {
+                font-size: 1.6rem;
+                margin-bottom: 1.8rem;
+            }
+
+            .bank-details {
+                width: 100%;
+            }
+
+            .bank-detail-item {
+                padding: 1rem;
+            }
+        }
+
+        /* Mobile Portrait Breakpoint */
+        @media (max-width: 768px) {
+            .donate-section {
+                padding: 6rem 1rem 2rem;
+            }
+
+            .donate-container {
+                padding: 0 0.5rem;
+                gap: 1.5rem;
+            }
+
+            .bank-info {
+                margin-bottom: 0.5rem;
+            }
+
+            .bank-info h2, 
+            .donation-form h2 {
+                font-size: 1.4rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .bank-info h2 i, 
+            .donation-form h2 i {
+                font-size: 1.2rem;
+            }
+
+            .bank-detail-item {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.8rem 1rem;
+            }
+
+            .bank-detail-item strong {
+                min-width: unset;
+                padding-right: 0;
+            }
+
+            .form-group {
+                gap: 0.5rem;
+            }
+
+            .form-group label {
+                font-size: 0.95rem;
+            }
+
+            .form-group label i {
+                font-size: 0.9rem;
+            }
+
+            .form-group input, 
+            .form-group textarea {
+                padding: 0.8rem 1rem;
+                font-size: 0.95rem;
+                border-radius: 8px;
+            }
+
+            .form-group textarea {
+                min-height: 100px;
+            }
+
+            .submit-btn {
+                padding: 0.9rem;
+                font-size: 1rem;
+                border-radius: 8px;
+                margin-top: 0.5rem;
+            }
+        }
+
+        /* Small Mobile Breakpoint */
+        @media (max-width: 480px) {
+            .donate-section {
+                padding: 5rem 0.8rem 1.5rem;
+            }
+
+            .donate-container {
+                padding: 0 0.3rem;
+                gap: 1.2rem;
+            }
+
+            .bank-info, .donation-form {
+                padding: 1.2rem;
+                border-radius: 10px;
+            }
+
+            .bank-info h2, 
+            .donation-form h2 {
+                font-size: 1.3rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .bank-detail-item {
+                padding: 0.8rem;
+            }
+
+            .form-group input, 
+            .form-group textarea {
+                padding: 0.8rem;
+            }
+        }
+
+        /* Landscape Mode Optimization */
+        @media (max-width: 992px) and (orientation: landscape) {
+            .donate-section {
+                padding: 5rem 2rem 2rem;
+            }
+
+            .donate-container {
+                flex-direction: row;
+                gap: 2rem;
+            }
+
+            .bank-info {
+                margin-bottom: 0;
+            }
         }
     </style>
 </head>
@@ -230,7 +497,7 @@
                 <img src="{{ url_for('static', filename='frontfest.jpg') }}" alt="Temple Logo" class="logo">
                 <div class="temple-name">
                     <h1>JAI SRI RAM</h1>
-                    <p class="temple-full-name">Sri Seetharama Lakshmana Sametha Anjaneya Swami Temple</p>
+                    <p class="temple-full-name">Sri Kodandarama Swami Temple</p>
                 </div>
             </div>
             <div class="nav-links">
@@ -249,10 +516,6 @@
                 <h2><i class="fas fa-university"></i> Bank Details</h2>
                 <div class="bank-details">
                     <div class="bank-detail-item">
-                        <strong>Account Name:</strong>
-                        <span>KOVURU SREEDHAR</span>
-                    </div>
-                    <div class="bank-detail-item">
                         <strong>Bank Name:</strong>
                         <span>ANDHRA PRAGATHI GRAMEENA BANK</span>
                     </div>
@@ -269,32 +532,30 @@
                         <span>ALLUR,ALLUR MANDAL,DIST-NELLORE.</span>
                     </div>
                 </div>
-                <div class="qr-code">
-                    <h3>Scan QR Code to Pay</h3>
-                    <img src="{{ url_for('static', filename='assets/qr-code.png') }}" alt="Payment QR Code">
-                </div>
             </div>
 
             <div class="donation-form">
                 <h2><i class="fas fa-hand-holding-heart"></i> Donation Details</h2>
                 <form id="donationForm" onsubmit="handleSubmit(event)">
                     <div class="form-group">
-                        <label for="full_name">Full Name *</label>
-                        <input type="text" id="full_name" name="full_name" required>
+                        <label for="full_name"><i class="fas fa-user"></i> Full Name</label>
+                        <input type="text" id="full_name" name="full_name" placeholder="Enter your full name" required>
                     </div>
                     <div class="form-group">
-                        <label for="address">Address *</label>
-                        <textarea id="address" name="address" rows="3" required></textarea>
+                        <label for="address"><i class="fas fa-map-marker-alt"></i> Address</label>
+                        <textarea id="address" name="address" placeholder="Enter your complete address" required></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="utr">UTR Number *</label>
-                        <input type="text" id="utr" name="utr" required>
+                        <label for="utr"><i class="fas fa-receipt"></i> UTR Number</label>
+                        <input type="text" id="utr" name="utr" placeholder="Enter UTR number from your transaction" required>
                     </div>
                     <div class="form-group">
-                        <label for="amount">Donation Amount (₹) *</label>
-                        <input type="number" id="amount" name="amount" min="1" required>
+                        <label for="amount"></i> Donated Amount (₹)</label>
+                        <input type="number" id="amount" name="amount" min="1" placeholder="Enter amount (₹)" required>
                     </div>
-                    <button type="submit" class="submit-btn">Submit Donation</button>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-heart"></i> Submit Donation
+                    </button>
                 </form>
             </div>
         </div>

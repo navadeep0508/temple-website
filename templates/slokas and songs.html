@@ -190,6 +190,94 @@
             .main-content {
                 padding-top: 15px;
             }
+
+            .nav-item {
+                padding: 15px;
+                font-size: 1.1rem;
+                display: flex;
+                align-items: center;
+                width: 100%;
+                border-radius: 8px;
+                margin-bottom: 5px;
+                transition: all 0.3s ease;
+            }
+
+            .nav-item i {
+                margin-right: 15px;
+                font-size: 1.2rem;
+                width: 20px;
+                text-align: center;
+            }
+
+            .nav-item:active {
+                background: rgba(139, 0, 0, 0.1);
+                transform: scale(0.98);
+            }
+
+            .sidebar-menu {
+                padding-top: 70px;
+            }
+
+            .sidebar-menu .nav-item {
+                border-bottom: 1px solid rgba(139, 0, 0, 0.1);
+                margin: 0;
+                border-radius: 0;
+            }
+
+            .sidebar-menu .nav-item:last-child {
+                border-bottom: none;
+            }
+
+            .back-nav {
+                position: fixed;
+                left: 10px;
+                top: 15px;
+                z-index: 1002;
+            }
+
+            .back-arrow {
+                width: 35px;
+                height: 35px;
+                background: var(--primary-color);
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .back-arrow:active {
+                transform: scale(0.95);
+            }
+
+            /* Improve touch feedback */
+            .nav-item, .back-arrow {
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            /* Add active state styles */
+            .nav-item.active {
+                background: var(--primary-color);
+                color: white;
+            }
+
+            /* Smooth transition for menu items */
+            .sidebar-menu .nav-item {
+                opacity: 0;
+                transform: translateX(20px);
+                animation: slideIn 0.3s ease forwards;
+            }
+
+            @keyframes slideIn {
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+
+            /* Add animation delay for each menu item */
+            .sidebar-menu .nav-item:nth-child(1) { animation-delay: 0.1s; }
+            .sidebar-menu .nav-item:nth-child(2) { animation-delay: 0.2s; }
+            .sidebar-menu .nav-item:nth-child(3) { animation-delay: 0.3s; }
         }
 
         .songs-container {
@@ -320,13 +408,158 @@
                 line-height: 1.8;
             }
         }
+
+        /* Enhanced Mobile Styles */
+        @media (max-width: 768px) {
+            /* Header and Navigation */
+            header {
+                height: 60px;
+            }
+
+            nav {
+                padding: 0 15px;
+            }
+
+            .logo {
+                width: 35px;
+                height: 35px;
+                border-width: 1.5px;
+            }
+
+            .temple-name h1 {
+                font-size: 1.1rem;
+                line-height: 1.2;
+            }
+
+            .temple-full-name {
+                font-size: 0.65rem;
+                line-height: 1.2;
+            }
+
+            /* Main Content */
+            .main-content {
+                padding-top: 70px;
+            }
+
+            .songs-container,
+            .slokas-container {
+                padding: 15px;
+            }
+
+            .song-card,
+            .sloka-card {
+                margin-bottom: 20px;
+            }
+
+            .song-header,
+            .sloka-header {
+                padding: 15px;
+            }
+
+            .song-header h3,
+            .sloka-header h3 {
+                font-size: 1.2rem;
+            }
+
+            .song-text,
+            .sloka-text {
+                font-size: 1rem;
+                line-height: 1.8;
+                padding: 15px;
+            }
+
+            /* Section Titles */
+            .section-title {
+                font-size: 1.6rem;
+                margin-bottom: 25px;
+                padding-bottom: 12px;
+            }
+
+            /* Touch Feedback */
+            .song-header:active,
+            .sloka-header:active {
+                background: linear-gradient(135deg, #8B0000, #A52A2A);
+            }
+
+            .song-card,
+            .sloka-card {
+                transform: none;
+                transition: transform 0.3s ease;
+            }
+
+            .song-card:active,
+            .sloka-card:active {
+                transform: scale(0.98);
+            }
+        }
+
+        /* Improved Animation Performance */
+        @media (prefers-reduced-motion: reduce) {
+            .song-content,
+            .sloka-content {
+                transition: none;
+            }
+
+            .song-header i,
+            .sloka-header i {
+                transition: none;
+            }
+        }
+
+        /* Landscape Mode */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .main-content {
+                padding-top: 60px;
+            }
+
+            .songs-container,
+            .slokas-container {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .song-card,
+            .sloka-card {
+                margin-bottom: 15px;
+            }
+        }
+
+        /* Sidebar Menu Improvements */
+        @media (max-width: 768px) {
+            .sidebar-menu {
+                width: 85%;
+                max-width: 280px;
+            }
+
+            .sidebar-menu .nav-item {
+                padding: 12px 15px;
+                font-size: 1rem;
+                opacity: 0;
+                transform: translateX(20px);
+                animation: slideIn 0.3s ease forwards;
+            }
+
+            .sidebar-menu.active .nav-item {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            .sidebar-menu .nav-item:nth-child(1) { animation-delay: 0.1s; }
+            .sidebar-menu .nav-item:nth-child(2) { animation-delay: 0.2s; }
+            .sidebar-menu .nav-item:nth-child(3) { animation-delay: 0.3s; }
+
+            .om-symbol-sidebar {
+                margin: 15px 0;
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <nav>
             <div class="back-nav">
-                <a href="{{ url_for('homepage') }}" class="back-arrow">
+                <a href="{{ url_for('homepage') }}" class="back-arrow" aria-label="Back to Home">
                     <i class="fas fa-arrow-left"></i>
                 </a>
             </div>
@@ -361,7 +594,7 @@
             </div>
         </div>
         <div class="om-symbol-sidebar">॥ ॐ ॥</div>
-        <a href="homepage.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
+        <a href="{{ url_for('homepage') }}" class="nav-item"><i class="fas fa-home"></i> Home</a>
         <a href="#slokas" class="nav-item"><i class="fas fa-book"></i> Slokas</a>
         <a href="#songs" class="nav-item"><i class="fas fa-music"></i> Songs</a>
     </div>

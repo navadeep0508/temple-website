@@ -7,6 +7,258 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Update logo styles */
+        .logo-image {
+            width: 45px;
+            height: 45px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2.5px solid var(--primary-color);
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 5px rgba(139, 0, 0, 0.1);
+        }
+
+        .logo-image:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(139, 0, 0, 0.2);
+        }
+
+        /* Enhanced temple title styles */
+        .temple-title h1 {
+            font-size: 1.4rem;
+            color: #8B0000; /* Deep red color */
+            margin: 0;
+            line-height: 1.2;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(139, 0, 0, 0.1);
+            background: linear-gradient(45deg, #8B0000, #B22222);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.5px;
+        }
+
+        .temple-title h2 {
+            font-size: 0.9rem;
+            color: #333;
+            margin: 0;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 8px;
+        }
+
+        /* Keep existing mobile styles */
+        @media (max-width: 768px) {
+            .logo-image {
+                width: 30px;
+                height: 30px;
+                border-width: 1.5px;
+            }
+            
+            .temple-title h1 {
+                font-size: 1rem;
+                background: linear-gradient(45deg, #8B0000, #B22222);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            
+            .temple-title h2 {
+                font-size: 0.7rem;
+            }
+
+            .logo-container {
+                gap: 0.4rem;
+                padding: 5px;
+            }
+        }
+
+        /* Mobile-first styles */
+        @media (max-width: 768px) {
+            .header-slideshow {
+                height: 60vh;
+            }
+
+            .hero {
+                min-height: 60vh;
+                padding: 1rem;
+            }
+
+            .hero-content {
+                padding: 1.5rem;
+                width: 90%;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .om-symbol {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .welcome-content {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .deities-image {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .welcome-text {
+                text-align: center;
+                padding: 1rem 0;
+            }
+
+            .welcome-text p {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+
+            .darshan-content {
+                padding: 0 1rem;
+            }
+
+            .timing-box {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .timing-card {
+                width: 100%;
+                padding: 1.5rem;
+            }
+
+            .timing-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .time {
+                font-size: 1rem;
+            }
+
+            .offerings-content {
+                padding: 0 1rem;
+            }
+
+            .offerings-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .offering-card {
+                padding: 1.5rem;
+            }
+
+            .address-content {
+                flex-direction: column;
+                padding: 0 1rem;
+            }
+
+            .contact-info {
+                margin-bottom: 1rem;
+            }
+
+            .map-container {
+                height: 300px;
+            }
+
+            .map-container iframe {
+                height: 100%;
+            }
+
+            nav {
+                padding: 0.5rem 1rem;
+            }
+
+            .logo-container {
+                gap: 0.5rem;
+            }
+
+            .logo-image {
+                width: 40px;
+                height: 40px;
+            }
+
+            .temple-title h1 {
+                font-size: 1.1rem;
+            }
+
+            .temple-title h2 {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Improved mobile navigation */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: rgba(255, 245, 230, 0.98);
+                flex-direction: column;
+                padding: 5rem 1.5rem 2rem;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-item {
+                width: 100%;
+                padding: 1rem;
+                text-align: left;
+                border-bottom: 1px solid rgba(139, 0, 0, 0.1);
+            }
+
+            .nav-item:last-child {
+                border-bottom: none;
+            }
+
+            .sign-in-btn, .sign-up-btn {
+                width: 100%;
+                margin: 0.5rem 0;
+                justify-content: center;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                position: fixed;
+                right: 1rem;
+                top: 1rem;
+                z-index: 1001;
+            }
+
+            .blur-overlay.active {
+                display: block;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="header-slideshow">
@@ -28,7 +280,7 @@
                 <a href="#darshan" class="nav-item"><i class="fas fa-pray"></i> Darshan</a>
                 <a href="#offerings" class="nav-item"><i class="fas fa-hand-holding-heart"></i> Donations</a>
                 <a href="#address" class="nav-item"><i class="fas fa-map-marker-alt"></i> Address</a>
-                <a href="{{ url_for("signin") }}" class="sign-in-btn"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+                <a href="{{ url_for('signin') }}" class="sign-in-btn"><i class="fas fa-sign-in-alt"></i> Sign In</a>
                 <a href="{{ url_for('signup') }}" class="sign-up-btn"><i class="fas fa-user-plus"></i> Sign Up</a>
             </div>
             <div class="mobile-menu-btn">
@@ -47,7 +299,7 @@
             <div class="hero-content">
                 <div class="om-symbol">॥ ॐ ॥</div>
                 <h1>Sri Kodandarama Swami Temple</h1>
-                <p>Ulavapalla Village, Dagadarthi Mandal, SPSR Nellore,Andhra Pradesh<br>524152</p>
+                <p>Ulavapalla Village, Dagadarthi Mandal<br>SPSR Nellore, Andhra Pradesh<br>524152</p>
                 <a href="{{ url_for('signup') }}" class="cta-button">
                     <i class="fas fa-user-plus"></i>
                     Join Our Temple Community
@@ -66,285 +318,6 @@
                 </div>
             </div>
         </section>
-
-        <style>
-            .welcome {
-                padding: 60px 20px;
-                background: linear-gradient(rgba(255, 245, 230, 0.9), rgba(255, 245, 230, 0.9)), url('assets/temple-pattern.png');
-                margin-bottom: 40px;
-            }
-
-            .welcome-content {
-                max-width: 1200px;
-                margin: 0 auto;
-                display: flex;
-                align-items: center;
-                gap: 40px;
-            }
-
-            .deities-image {
-                flex: 1;
-                max-width: 400px;
-                border-radius: 10px;
-                overflow: hidden;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            }
-
-            .deity-img {
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-                display: block;
-            }
-
-            .welcome-text {
-                flex: 1;
-                padding: 20px;
-            }
-
-            .welcome-text .section-title {
-                text-align: left;
-                margin-bottom: 20px;
-                color: var(--primary-color);
-            }
-
-            .welcome-text p {
-                font-size: 1.1rem;
-                line-height: 1.8;
-                color: #333;
-                text-align: justify;
-            }
-
-            @media (max-width: 992px) {
-                .welcome-content {
-                    gap: 30px;
-                }
-
-                .deities-image {
-                    max-width: 350px;
-                }
-
-                .welcome-text p {
-                    font-size: 1rem;
-                    line-height: 1.6;
-                }
-            }
-
-            @media (max-width: 768px) {
-                .welcome-content {
-                    flex-direction: column;
-                    gap: 25px;
-                }
-
-                .deities-image {
-                    max-width: 300px;
-                    margin: 0 auto;
-                }
-
-                .welcome-text {
-                    padding: 0;
-                }
-
-                .welcome-text .section-title {
-                    text-align: center;
-                    font-size: 1.8rem;
-                }
-            }
-
-            .logo-container {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 5px;
-                padding: 10px;
-                max-width: 600px;
-                position: relative;
-                z-index: 1001;
-            }
-
-            .logo-container .logo-image {
-                width: 50px;
-                height: 50px;
-                object-fit: cover;
-                border-radius: 50%;
-                border: 2px solid var(--primary-color);
-            }
-
-            .temple-title {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .temple-title h1 {
-                font-size: 1.3rem;
-                color: var(--primary-color);
-                margin: 0;
-                line-height: 1.2;
-            }
-
-            .temple-title h2 {
-                font-size: 0.85rem;
-                color: #333;
-                margin: 0;
-                font-weight: 500;
-                line-height: 1.2;
-            }
-
-            .mobile-menu-btn {
-                display: none;
-                cursor: pointer;
-                font-size: 1.5rem;
-                color: var(--primary-color);
-                z-index: 1001;
-                padding: 5px 10px;
-                margin-top: 5px;
-                background: rgba(255, 245, 230, 0.95);
-                border-radius: 5px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            }
-
-            @media (max-width: 768px) {
-                .mobile-menu-btn {
-                    display: block;
-                }
-
-                .nav-links {
-                    position: fixed;
-                    top: 0;
-                    right: -280px;
-                    height: 100vh;
-                    width: 280px;
-                    background: white;
-                    flex-direction: column;
-                    padding: 80px 20px 20px;
-                    transition: right 0.3s ease;
-                    z-index: 999;
-                    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-                }
-
-                .nav-links.active {
-                    right: 0;
-                }
-
-                .nav-item {
-                    margin: 10px 0;
-                    font-size: 1.1rem;
-                    width: 100%;
-                    text-align: left;
-                }
-
-                .sign-in-btn,
-                .sign-up-btn {
-                    margin-top: 10px;
-                    width: 100%;
-                    text-align: center;
-                }
-
-                header {
-                    position: fixed;
-                    width: 100%;
-                    z-index: 1000;
-                    background: rgba(255, 245, 230, 0.95);
-                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                }
-
-                nav {
-                    padding: 5px 15px;
-                    display: flex;
-                    justify-content: flex-start;
-                    align-items: flex-start;
-                    position: relative;
-                }
-            }
-
-            .darshan {
-                padding: 60px 20px;
-                background: linear-gradient(rgba(255, 245, 230, 0.9), rgba(255, 245, 230, 0.9));
-            }
-
-            .darshan-content {
-                max-width: 1200px;
-                margin: 0 auto;
-                text-align: center;
-            }
-
-            .ritual-info {
-                max-width: 800px;
-                margin: 0 auto 30px;
-            }
-
-            .timing-box {
-                display: flex;
-                justify-content: center;
-                align-items: stretch;
-                gap: 30px;
-                margin-top: 30px;
-                flex-wrap: wrap;
-            }
-
-            .timing-card {
-                background: white;
-                padding: 30px 40px;
-                border-radius: 15px;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-                text-align: center;
-                min-width: 280px;
-                max-width: 350px;
-                margin: 0;
-                flex: 1;
-            }
-
-            .timing-card h3 {
-                color: var(--primary-color);
-                font-size: 1.5rem;
-                margin-bottom: 20px;
-            }
-
-            .timing-card .time {
-                font-size: 1.2rem;
-                color: #333;
-                margin: 10px 0;
-            }
-
-            .timing-card .blessing {
-                color: var(--primary-color);
-                font-size: 1.3rem;
-                margin-top: 20px;
-                font-weight: 600;
-            }
-
-            @media (max-width: 768px) {
-                .timing-box {
-                    gap: 20px;
-                }
-                
-                .timing-card {
-                    min-width: 250px;
-                    padding: 25px 30px;
-                    margin: 0;
-                }
-            }
-
-            /* Mobile Menu Styles */
-            .blur-overlay {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.5);
-                backdrop-filter: blur(5px);
-                z-index: 998;
-                opacity: 0;
-                transition: opacity 0.3s ease;
-            }
-
-            .blur-overlay.active {
-                display: block;
-                opacity: 1;
-            }
-        </style>
 
         <section id="darshan" class="darshan">
             <div class="darshan-content">
@@ -388,7 +361,6 @@
                 <div class="bank-details">
                     <h3>Donation Details</h3>
                     <p><strong>BANK NAME:</strong>ANDHRA PRAGATHI GRAMEENA BANK</p>
-                    <p><strong>ACCOUNT HOLDER:</strong>KOVURU SREEDHAR</p>
                     <p><strong>ACCOUNT NUMBER:</strong>91184361980</p>
                     <p><strong>IFSC:</strong>APGB0004039</p>
                 </div>
@@ -408,7 +380,7 @@
                     </div>
                     <div class="contact-info">
                         <h3><i class="fas fa-phone"></i> Contact Details</h3>
-                        <p>Temple Office: +91-7893419676</p>
+                        <p>Temple Office: +91-9110310756</p>
                         <p>Email: srikodandaramaswamiupl@gmail.com</p>
                     </div>
                 </div>
@@ -434,84 +406,114 @@
     <div class="blur-overlay"></div>
 
     <script>
-        // Mobile menu toggle with blur effect
+        // Enhanced mobile menu functionality
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
         const blurOverlay = document.querySelector('.blur-overlay');
-        const navItems = document.querySelectorAll('.nav-item');
+        const navItems = document.querySelectorAll('.nav-item, .sign-in-btn, .sign-up-btn');
 
         function toggleMobileMenu() {
             navLinks.classList.toggle('active');
             blurOverlay.classList.toggle('active');
+            mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
+            mobileMenuBtn.querySelector('i').classList.toggle('fa-times');
             document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
         }
 
         mobileMenuBtn.addEventListener('click', toggleMobileMenu);
         blurOverlay.addEventListener('click', toggleMobileMenu);
 
-        // Smooth scroll and close menu on nav item click
+        // Close menu when clicking nav items
         navItems.forEach(item => {
-            item.addEventListener('click', (e) => {
+            item.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('active') && 
+                !navLinks.contains(e.target) && 
+                !mobileMenuBtn.contains(e.target)) {
+                toggleMobileMenu();
+            }
+        });
+
+        // Smooth scroll with offset for header
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const targetId = item.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
                 
-                if (targetSection) {
-                    // Close mobile menu
-                    if (navLinks.classList.contains('active')) {
-                        toggleMobileMenu();
-                    }
-                    
-                    // Smooth scroll to section
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerOffset = 60;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
 
-        // Scroll animations
+        // Enhanced slideshow functionality
+        function initSlideshow() {
+            const slides = document.querySelectorAll('.hero-slide');
+            let currentSlide = 0;
+            let slideInterval;
+
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                slides[index].classList.add('active');
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            function startSlideshow() {
+                if (slideInterval) clearInterval(slideInterval);
+                slideInterval = setInterval(nextSlide, 5000);
+            }
+
+            // Handle visibility change
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    clearInterval(slideInterval);
+                } else {
+                    startSlideshow();
+                }
+            });
+
+            // Start slideshow
+            startSlideshow();
+        }
+
+        // Initialize slideshow
+        initSlideshow();
+
+        // Handle scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animate');
                 }
             });
+        }, {
+            threshold: 0.1
         });
 
         document.querySelectorAll('section').forEach((section) => {
             section.classList.add('fade-in');
             observer.observe(section);
         });
-
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Slideshow functionality
-        const heroSlides = document.querySelectorAll('.hero-slide');
-        let currentHeroSlide = 0;
-
-        function showHeroSlide(index) {
-            heroSlides.forEach(slide => slide.classList.remove('active'));
-            heroSlides[index].classList.add('active');
-        }
-
-        function nextHeroSlide() {
-            currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
-            showHeroSlide(currentHeroSlide);
-        }
-
-        // Initialize hero slideshow
-        showHeroSlide(0);
-        setInterval(nextHeroSlide, 5000); // Change slide every 5 seconds
     </script>
 </body>
 </html> 

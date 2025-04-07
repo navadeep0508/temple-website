@@ -237,14 +237,154 @@
 @media (max-width: 768px) {
     .signup-container {
         padding: 1rem;
+        min-height: 100vh;
+        justify-content: center;
     }
 
     .temple-border {
-        padding: 2rem 1.5rem;
+        padding: 2rem 1rem;
+    }
+
+    .temple-border::before {
+        margin: 0.5rem;
     }
 
     .welcome-text {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+        letter-spacing: 2px;
+    }
+
+    .welcome-text::before {
+        top: -30px;
         font-size: 1.8rem;
+    }
+
+    .form-group {
+        gap: 0.3rem;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    .form-group input {
+        padding: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .signup-btn {
+        padding: 0.8rem;
+        font-size: 1rem;
+        margin-top: 1rem;
+    }
+
+    .login-link {
+        margin-top: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .back-nav {
+        top: 0.8rem;
+        left: 0.8rem;
+    }
+
+    .back-arrow {
+        width: 32px;
+        height: 32px;
+    }
+
+    .back-arrow i {
+        font-size: 0.9rem;
+    }
+
+    .temple-border::after {
+        width: 40px;
+        height: 40px;
+        top: 10px;
+        right: 10px;
+    }
+
+    /* Improve touch targets */
+    .toggle-password {
+        padding: 10px;
+        margin-right: -5px;
+    }
+
+    /* Ensure content doesn't overflow */
+    .signup-box {
+        max-width: 100%;
+        margin: 0.5rem;
+    }
+
+    .password-input {
+        position: relative;
+    }
+
+    .toggle-password {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+/* Add iPhone SE and smaller device support */
+@media (max-width: 375px) {
+    .signup-container {
+        padding: 0.5rem;
+    }
+
+    .temple-border {
+        padding: 1.5rem 0.8rem;
+    }
+
+    .welcome-text {
+        font-size: 1.4rem;
+    }
+
+    .welcome-text::before {
+        top: -25px;
+        font-size: 1.6rem;
+    }
+
+    .form-group input {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+    }
+
+    .form-group label {
+        font-size: 0.85rem;
+    }
+}
+
+/* Add landscape mode support */
+@media (max-height: 600px) and (orientation: landscape) {
+    .signup-container {
+        padding: 0.5rem;
+    }
+
+    .temple-border {
+        padding: 1.5rem 1rem;
+    }
+
+    .welcome-text {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+
+    .welcome-text::before {
+        top: -25px;
+        font-size: 1.6rem;
+    }
+
+    .form-group {
+        gap: 0.2rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .signup-form {
+        gap: 0.8rem;
     }
 }
 

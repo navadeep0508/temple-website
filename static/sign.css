@@ -146,17 +146,20 @@
 
 .input-icon {
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .input-icon input {
     width: 100%;
-    padding: 1rem 1rem 1rem 2.5rem;
+    padding: 1rem 2.8rem 1rem 2.8rem;
     border: 2px solid rgba(218, 165, 32, 0.3);
     border-radius: 10px;
     background-color: var(--input-bg);
     transition: all var(--transition-speed) ease;
     font-size: 1rem;
     color: var(--text-color);
+    height: 3rem;
 }
 
 .input-icon i:not(.toggle-password) {
@@ -166,6 +169,14 @@
     transform: translateY(-50%);
     color: var(--primary-color);
     opacity: 0.7;
+    font-size: 1.2rem;
+    pointer-events: none;
+    width: 1.2rem;
+    text-align: center;
+}
+
+.input-icon .fa-mobile-alt {
+    font-size: 1.4rem;
 }
 
 .input-icon .toggle-password {
@@ -176,6 +187,19 @@
     color: var(--primary-color);
     opacity: 0.7;
     cursor: pointer;
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    z-index: 2;
+}
+
+.input-icon input:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.2);
+}
+
+.input-icon input:focus + i:not(.toggle-password) {
+    color: var(--secondary-color);
+    opacity: 1;
 }
 
 .input-icon i:hover {
@@ -242,14 +266,186 @@
 @media (max-width: 768px) {
     .signin-container {
         padding: 1rem;
+        min-height: 100vh;
+        justify-content: center;
     }
-    
+
     .temple-border {
-        padding: 2rem 1.5rem;
+        padding: 2rem 1rem;
     }
-    
+
+    .temple-border::before {
+        margin: 0.5rem;
+    }
+
     .welcome-text {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+        letter-spacing: 2px;
+    }
+
+    .om-symbol {
+        font-size: 2rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .input-icon input {
+        padding: 0.8rem 2.5rem;
+        height: 2.8rem;
+    }
+
+    .input-icon i:not(.toggle-password) {
+        font-size: 1.1rem;
+        left: 0.8rem;
+    }
+
+    .input-icon .fa-mobile-alt {
+        font-size: 1.3rem;
+    }
+
+    .input-icon .toggle-password {
+        right: 0.8rem;
+        font-size: 1rem;
+        padding: 0.4rem;
+    }
+
+    .form-options {
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .signin-btn {
+        padding: 0.8rem;
+        font-size: 1rem;
+        margin-top: 1rem;
+    }
+
+    .signup-link {
+        margin-top: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .back-nav {
+        top: 0.8rem;
+        left: 0.8rem;
+    }
+
+    .back-arrow {
+        width: 32px;
+        height: 32px;
+    }
+
+    .back-arrow i {
+        font-size: 0.9rem;
+    }
+
+    .temple-border::after {
+        width: 40px;
+        height: 40px;
+        top: 10px;
+        right: 10px;
+    }
+
+    /* Improve touch targets */
+    .input-icon .toggle-password {
+        padding: 10px;
+        margin-right: -5px;
+    }
+
+    .remember-me {
+        gap: 0.3rem;
+    }
+
+    .checkmark {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* Adjust animations for mobile */
+    @keyframes boxAppear {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Ensure content doesn't overflow */
+    .signin-box {
+        max-width: 100%;
+        margin: 0.5rem;
+    }
+}
+
+/* Add iPhone SE and smaller device support */
+@media (max-width: 375px) {
+    .signin-container {
+        padding: 0.5rem;
+    }
+
+    .temple-border {
+        padding: 1.5rem 0.8rem;
+    }
+
+    .welcome-text {
+        font-size: 1.4rem;
+    }
+
+    .om-symbol {
         font-size: 1.8rem;
+    }
+
+    .input-icon input {
+        padding: 0.7rem 2.2rem;
+        height: 2.6rem;
+        font-size: 0.95rem;
+    }
+
+    .input-icon i:not(.toggle-password) {
+        font-size: 1rem;
+        left: 0.7rem;
+    }
+
+    .input-icon .fa-mobile-alt {
+        font-size: 1.2rem;
+    }
+
+    .input-icon .toggle-password {
+        right: 0.7rem;
+        font-size: 0.9rem;
+        padding: 0.3rem;
+    }
+}
+
+/* Add landscape mode support */
+@media (max-height: 600px) and (orientation: landscape) {
+    .signin-container {
+        padding: 0.5rem;
+    }
+
+    .temple-border {
+        padding: 1.5rem 1rem;
+    }
+
+    .om-symbol {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .welcome-text {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+
+    .form-group {
+        margin-bottom: 0.8rem;
     }
 }
 
@@ -498,5 +694,153 @@
     
     .back-arrow i {
         font-size: 0.9rem;
+    }
+}
+
+/* Add styles for error messages */
+.error-message {
+    color: #dc3545;
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+    min-height: 1.2em;
+}
+
+/* Add styles for success message */
+.success-message {
+    color: #28a745;
+    background-color: rgba(40, 167, 69, 0.1);
+    border: 1px solid #28a745;
+    border-radius: 8px;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+/* Style for forgot password link */
+.forgot-password {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color var(--transition-speed) ease;
+}
+
+.forgot-password:hover {
+    color: var(--secondary-color);
+}
+
+/* Style for remember me text */
+.remember-text {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+/* Disabled button state */
+.signin-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Loading spinner */
+.fa-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Screen reader only class */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Mobile specific styles */
+@media (max-width: 768px) {
+    .error-message {
+        font-size: 0.8rem;
+    }
+
+    .success-message {
+        font-size: 0.9rem;
+        padding: 0.6rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .forgot-password {
+        font-size: 0.85rem;
+    }
+
+    .remember-text {
+        font-size: 0.85rem;
+    }
+
+    /* Improve touch targets */
+    .input-icon input {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .toggle-password {
+        padding: 12px;
+        margin: -12px;
+    }
+
+    /* Prevent text selection during touch */
+    .signin-btn,
+    .back-arrow,
+    .create-account,
+    .forgot-password {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    /* Active state for touch */
+    .signin-btn:active,
+    .back-arrow:active,
+    .create-account:active,
+    .forgot-password:active {
+        opacity: 0.7;
+    }
+}
+
+/* iPhone SE and smaller devices */
+@media (max-width: 375px) {
+    .error-message {
+        font-size: 0.75rem;
+    }
+
+    .success-message {
+        font-size: 0.85rem;
+        padding: 0.5rem;
+    }
+
+    .form-options {
+        flex-direction: column;
+        gap: 0.8rem;
+        align-items: flex-start;
+    }
+}
+
+/* Landscape mode adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+    .form-options {
+        margin: 0.5rem 0;
+    }
+
+    .error-message {
+        margin-top: 0.2rem;
+    }
+
+    .success-message {
+        margin-bottom: 0.5rem;
     }
 } 

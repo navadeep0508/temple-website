@@ -978,6 +978,177 @@
             from {opacity: 0.4}
             to {opacity: 1}
         }
+
+        /* Mobile Optimization Styles */
+        @media (max-width: 768px) {
+            /* Header and Navigation */
+            header {
+                height: 60px;
+            }
+
+            nav {
+                padding: 0 15px;
+            }
+
+            .logo {
+                width: 35px;
+                height: 35px;
+                border-width: 1.5px;
+            }
+
+            .temple-name h1 {
+                font-size: 1.1rem;
+                line-height: 1.2;
+            }
+
+            .temple-full-name {
+                font-size: 0.65rem;
+                line-height: 1.2;
+            }
+
+            /* Hero Section */
+            .hero {
+                height: 60vh;
+                min-height: 400px;
+                margin-top: 60px;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            /* Gallery Section */
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 0 15px;
+            }
+
+            .gallery-item {
+                aspect-ratio: 16/9;
+            }
+
+            .prev, .next {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            /* Quick Actions */
+            .quick-actions {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .action-card {
+                padding: 20px;
+            }
+
+            .action-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .action-card p {
+                font-size: 0.95rem;
+                margin-bottom: 20px;
+            }
+
+            /* Location Section */
+            .location-details {
+                gap: 15px;
+                padding: 0 15px;
+            }
+
+            .address-card,
+            .contact-card {
+                padding: 20px;
+            }
+
+            .map-container {
+                height: 250px;
+                margin: 15px auto;
+            }
+
+            /* Section Spacing */
+            .dashboard-section,
+            .events-section,
+            .gallery-section,
+            .profile-section,
+            .location-section {
+                padding: 40px 15px;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+                margin-bottom: 25px;
+            }
+
+            /* Sidebar Menu */
+            .sidebar-menu {
+                width: 85%;
+                max-width: 280px;
+            }
+
+            .sidebar-menu .nav-item {
+                padding: 12px 15px;
+                font-size: 1rem;
+            }
+
+            .om-symbol-sidebar {
+                margin: 15px 0;
+            }
+
+            /* Footer */
+            footer {
+                padding: 15px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Touch Optimization */
+        @media (hover: none) {
+            .nav-item:active,
+            .action-card:active,
+            .gallery-item:active {
+                transform: scale(0.98);
+            }
+
+            .back-arrow:active {
+                transform: scale(0.95);
+            }
+
+            .prev:active, 
+            .next:active {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        /* Landscape Mode */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero {
+                height: 100vh;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quick-actions {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .action-card {
+                flex: 0 0 calc(50% - 15px);
+            }
+        }
     </style>
 </head>
 <body>
@@ -1174,6 +1345,33 @@
                             <p>Temple Interior • <span class="view-count-2">1/6</span></p>
                         </div>
                     </div>
+                    <div class="gallery-item slideshow-container">
+                        <div class="gallery-slides">
+                            <div class="slide fade active">
+                                <img src="{{ url_for('static', filename='poleramma.jpg') }}" alt="Poleramma Thalli">
+                            </div>
+                            <div class="slide fade">
+                                <img src="{{ url_for('static', filename='poleramma soolam.jpg') }}" alt="Poleramma Thalli Soolam">
+                            </div>
+                            <div class="slide fade">
+                                <img src="{{ url_for('static', filename='poleramma soolam 2.jpg') }}" alt="Poleramma Thalli Soolam 2">
+                            </div>
+                            <div class="slide fade">
+                                <img src="{{ url_for('static', filename='poleramma sadhi.jpg') }}" alt="Poleramma Thalli Sadhi">
+                            </div>
+                            <a class="prev" onclick="changeSlide(-1, 2)">❮</a>
+                            <a class="next" onclick="changeSlide(1, 2)">❯</a>
+                            <div class="dots-container">
+                                <span class="dot" onclick="currentSlide(1, 2)"></span>
+                                <span class="dot" onclick="currentSlide(2, 2)"></span>
+                                <span class="dot" onclick="currentSlide(3, 2)"></span>
+                                <span class="dot" onclick="currentSlide(4, 2)"></span>
+                            </div>
+                        </div>
+                        <div class="gallery-overlay">
+                            <p>Poleramma Thalli • <span class="view-count-3">1/4</span></p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -1251,7 +1449,7 @@
                     <div class="contact-card">
                         <i class="fas fa-phone-alt"></i>
                         <h3>Contact</h3>
-                        <p>Temple Office: +91 7893419616<br>
+                        <p>Temple Office: +91 9110310756<br>
                         Email: srikodandaramaswamiupl@gmail.com</p>
                     </div>
                 </div>
@@ -1342,10 +1540,11 @@
         // Initialize slideshow
         initSlideshow();
 
-        let slideIndex = [1, 1];
-        let slideTimer = [null, null];
+        let slideIndex = [1, 1, 1];
+        let slideTimer = [null, null, null];
         showSlides(1, 0);
         showSlides(1, 1);
+        showSlides(1, 2);
 
         function resetSlideTimer(no) {
             // Clear existing timer
@@ -1372,7 +1571,7 @@
             const slideshows = document.querySelectorAll('.gallery-slides');
             const slides = slideshows[no].querySelectorAll('.slide');
             const dots = slideshows[no].querySelectorAll('.dot');
-            const viewCount = no === 0 ? document.querySelector('.view-count') : document.querySelector('.view-count-2');
+            const viewCount = no === 0 ? document.querySelector('.view-count') : no === 1 ? document.querySelector('.view-count-2') : document.querySelector('.view-count-3');
             
             if (n > slides.length) {slideIndex[no] = 1}
             if (n < 1) {slideIndex[no] = slides.length}
@@ -1387,9 +1586,10 @@
             viewCount.textContent = `${slideIndex[no]}/${slides.length}`;
         }
 
-        // Initialize both timers
+        // Initialize all timers
         resetSlideTimer(0);
         resetSlideTimer(1);
+        resetSlideTimer(2);
     </script>
 </body>
 </html>
