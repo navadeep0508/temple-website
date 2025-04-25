@@ -258,7 +258,26 @@
                 display: block;
             }
         }
-    </style>
+    .sidebar-signup {
+    background: linear-gradient(135deg, #8B0000, #DAA520);
+    color: #fff !important;
+    font-weight: 600;
+    border-radius: 25px;
+    padding: 0.75rem 1.5rem;
+    margin: 1rem 0 0.5rem 0;
+    box-shadow: 0 2px 8px rgba(139,0,0,0.08);
+    text-align: center;
+    display: block;
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+.sidebar-signup:hover {
+    background: linear-gradient(135deg, #DAA520, #8B0000);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(139,0,0,0.15);
+    text-decoration: none;
+}
+
+</style>
 </head>
 <body>
     <div class="header-slideshow">
@@ -281,7 +300,7 @@
                 <a href="#offerings" class="nav-item"><i class="fas fa-hand-holding-heart"></i> Donations</a>
                 <a href="#address" class="nav-item"><i class="fas fa-map-marker-alt"></i> Address</a>
                 <a href="{{ url_for('signin') }}" class="sign-in-btn"><i class="fas fa-sign-in-alt"></i> Sign In</a>
-                <a href="{{ url_for('signup') }}" class="sign-up-btn"><i class="fas fa-user-plus"></i> Sign Up</a>
+                <a href="{{ url_for('signup') }}" class="sign-up-btn sidebar-signup"><i class="fas fa-user-plus"></i> Sign Up</a>
             </div>
             <div class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>

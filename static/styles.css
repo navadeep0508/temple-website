@@ -366,6 +366,91 @@ nav {
 
 /* Responsive styles */
 @media (max-width: 768px) {
+    /* General Layout */
+    .main-container,
+    .main-content,
+    .dashboard-section,
+    .gallery-section,
+    .profile-section,
+    .slokas-section {
+        padding: 1rem !important;
+        max-width: 100vw !important;
+        box-sizing: border-box;
+    }
+    h1, h2, h3, .section-title {
+        font-size: 1.3rem !important;
+        word-break: break-word;
+        text-align: center;
+    }
+    .hero-content {
+        padding: 1rem !important;
+        max-width: 100vw !important;
+    }
+    .gallery-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    .gallery-item img {
+        max-width: 100vw !important;
+        height: auto !important;
+    }
+    .profile-container {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        padding: 1rem !important;
+    }
+    .profile-header {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+    }
+    .dashboard-header {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+    }
+    .event-card, .timing-card, .activity-history {
+        padding: 1rem !important;
+        margin: 0.5rem 0 !important;
+        border-radius: 10px !important;
+    }
+    header {
+        height: auto !important;
+        min-height: 55px !important;
+        padding: 0.5rem 1rem !important;
+    }
+    nav {
+        flex-direction: row !important;
+        padding: 0 !important;
+    }
+    .logo-container {
+        gap: 0.5rem !important;
+    }
+    footer {
+        font-size: 0.9rem !important;
+        padding: 0.5rem 1rem !important;
+        text-align: center !important;
+    }
+    .sidebar, .sidebar-header, .sidebar-nav, .sidebar.collapsed, .main-content.expanded {
+        display: none !important;
+    }
+    .action-btn, .donate-btn, .donations-btn, .edit-profile-btn {
+        width: 100% !important;
+        padding: 1rem !important;
+        font-size: 1rem !important;
+        margin: 0.5rem 0 !important;
+    }
+    .om-symbol {
+        font-size: 2rem !important;
+    }
+    .sloka-text {
+        font-size: 1rem !important;
+    }
+    html, body {
+        overflow-x: hidden !important;
+    }
+}
+
     .hero h1 {
         font-size: 2rem;
     }
@@ -619,6 +704,34 @@ footer {
         right: -100%;
         flex-direction: column;
         background: rgba(255, 245, 230, 0.98);
+        width: 80vw;
+        height: calc(100vh - 80px);
+        padding: 2rem 1rem;
+        transition: right var(--transition-speed) ease;
+        backdrop-filter: blur(10px);
+        border-left: 2px solid var(--border-color);
+        z-index: 1000;
+    }
+    .nav-links.active {
+        right: 0;
+    }
+    .nav-item {
+        width: 100%;
+        text-align: center;
+        padding: 1rem;
+        border-radius: 10px;
+    }
+    .mobile-menu-btn {
+        display: block;
+    }
+}
+
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        right: -100%;
+        flex-direction: column;
+        background: rgba(255, 245, 230, 0.98);
         width: 80%;
         height: calc(100vh - 80px);
         padding: 2rem;
@@ -655,6 +768,91 @@ footer {
 }
 
 @media (max-width: 768px) {
+    /* General Layout */
+    .main-container,
+    .main-content,
+    .dashboard-section,
+    .gallery-section,
+    .profile-section,
+    .slokas-section {
+        padding: 1rem !important;
+        max-width: 100vw !important;
+        box-sizing: border-box;
+    }
+    h1, h2, h3, .section-title {
+        font-size: 1.3rem !important;
+        word-break: break-word;
+        text-align: center;
+    }
+    .hero-content {
+        padding: 1rem !important;
+        max-width: 100vw !important;
+    }
+    .gallery-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    .gallery-item img {
+        max-width: 100vw !important;
+        height: auto !important;
+    }
+    .profile-container {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        padding: 1rem !important;
+    }
+    .profile-header {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+    }
+    .dashboard-header {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+    }
+    .event-card, .timing-card, .activity-history {
+        padding: 1rem !important;
+        margin: 0.5rem 0 !important;
+        border-radius: 10px !important;
+    }
+    header {
+        height: auto !important;
+        min-height: 55px !important;
+        padding: 0.5rem 1rem !important;
+    }
+    nav {
+        flex-direction: row !important;
+        padding: 0 !important;
+    }
+    .logo-container {
+        gap: 0.5rem !important;
+    }
+    footer {
+        font-size: 0.9rem !important;
+        padding: 0.5rem 1rem !important;
+        text-align: center !important;
+    }
+    .sidebar, .sidebar-header, .sidebar-nav, .sidebar.collapsed, .main-content.expanded {
+        display: none !important;
+    }
+    .action-btn, .donate-btn, .donations-btn, .edit-profile-btn {
+        width: 100% !important;
+        padding: 1rem !important;
+        font-size: 1rem !important;
+        margin: 0.5rem 0 !important;
+    }
+    .om-symbol {
+        font-size: 2rem !important;
+    }
+    .sloka-text {
+        font-size: 1rem !important;
+    }
+    html, body {
+        overflow-x: hidden !important;
+    }
+}
+
     .welcome-content,
     .address-content {
         grid-template-columns: 1fr;
@@ -1021,6 +1219,91 @@ html {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    /* General Layout */
+    .main-container,
+    .main-content,
+    .dashboard-section,
+    .gallery-section,
+    .profile-section,
+    .slokas-section {
+        padding: 1rem !important;
+        max-width: 100vw !important;
+        box-sizing: border-box;
+    }
+    h1, h2, h3, .section-title {
+        font-size: 1.3rem !important;
+        word-break: break-word;
+        text-align: center;
+    }
+    .hero-content {
+        padding: 1rem !important;
+        max-width: 100vw !important;
+    }
+    .gallery-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    .gallery-item img {
+        max-width: 100vw !important;
+        height: auto !important;
+    }
+    .profile-container {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        padding: 1rem !important;
+    }
+    .profile-header {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+    }
+    .dashboard-header {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+    }
+    .event-card, .timing-card, .activity-history {
+        padding: 1rem !important;
+        margin: 0.5rem 0 !important;
+        border-radius: 10px !important;
+    }
+    header {
+        height: auto !important;
+        min-height: 55px !important;
+        padding: 0.5rem 1rem !important;
+    }
+    nav {
+        flex-direction: row !important;
+        padding: 0 !important;
+    }
+    .logo-container {
+        gap: 0.5rem !important;
+    }
+    footer {
+        font-size: 0.9rem !important;
+        padding: 0.5rem 1rem !important;
+        text-align: center !important;
+    }
+    .sidebar, .sidebar-header, .sidebar-nav, .sidebar.collapsed, .main-content.expanded {
+        display: none !important;
+    }
+    .action-btn, .donate-btn, .donations-btn, .edit-profile-btn {
+        width: 100% !important;
+        padding: 1rem !important;
+        font-size: 1rem !important;
+        margin: 0.5rem 0 !important;
+    }
+    .om-symbol {
+        font-size: 2rem !important;
+    }
+    .sloka-text {
+        font-size: 1rem !important;
+    }
+    html, body {
+        overflow-x: hidden !important;
+    }
+}
+
     .profile-container {
         grid-template-columns: 1fr;
     }
@@ -1083,6 +1366,34 @@ html {
 
 /* Update mobile styles */
 @media (max-width: 968px) {
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        right: -100%;
+        flex-direction: column;
+        background: rgba(255, 245, 230, 0.98);
+        width: 80vw;
+        height: calc(100vh - 80px);
+        padding: 2rem 1rem;
+        transition: right var(--transition-speed) ease;
+        backdrop-filter: blur(10px);
+        border-left: 2px solid var(--border-color);
+        z-index: 1000;
+    }
+    .nav-links.active {
+        right: 0;
+    }
+    .nav-item {
+        width: 100%;
+        text-align: center;
+        padding: 1rem;
+        border-radius: 10px;
+    }
+    .mobile-menu-btn {
+        display: block;
+    }
+}
+
     .nav-links {
         position: fixed;
         top: 80px;
@@ -1229,6 +1540,91 @@ header {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    /* General Layout */
+    .main-container,
+    .main-content,
+    .dashboard-section,
+    .gallery-section,
+    .profile-section,
+    .slokas-section {
+        padding: 1rem !important;
+        max-width: 100vw !important;
+        box-sizing: border-box;
+    }
+    h1, h2, h3, .section-title {
+        font-size: 1.3rem !important;
+        word-break: break-word;
+        text-align: center;
+    }
+    .hero-content {
+        padding: 1rem !important;
+        max-width: 100vw !important;
+    }
+    .gallery-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    .gallery-item img {
+        max-width: 100vw !important;
+        height: auto !important;
+    }
+    .profile-container {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        padding: 1rem !important;
+    }
+    .profile-header {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+    }
+    .dashboard-header {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+    }
+    .event-card, .timing-card, .activity-history {
+        padding: 1rem !important;
+        margin: 0.5rem 0 !important;
+        border-radius: 10px !important;
+    }
+    header {
+        height: auto !important;
+        min-height: 55px !important;
+        padding: 0.5rem 1rem !important;
+    }
+    nav {
+        flex-direction: row !important;
+        padding: 0 !important;
+    }
+    .logo-container {
+        gap: 0.5rem !important;
+    }
+    footer {
+        font-size: 0.9rem !important;
+        padding: 0.5rem 1rem !important;
+        text-align: center !important;
+    }
+    .sidebar, .sidebar-header, .sidebar-nav, .sidebar.collapsed, .main-content.expanded {
+        display: none !important;
+    }
+    .action-btn, .donate-btn, .donations-btn, .edit-profile-btn {
+        width: 100% !important;
+        padding: 1rem !important;
+        font-size: 1rem !important;
+        margin: 0.5rem 0 !important;
+    }
+    .om-symbol {
+        font-size: 2rem !important;
+    }
+    .sloka-text {
+        font-size: 1rem !important;
+    }
+    html, body {
+        overflow-x: hidden !important;
+    }
+}
+
     .sloka-card, .song-card {
         padding: 1.5rem;
     }
