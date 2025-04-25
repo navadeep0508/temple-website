@@ -152,7 +152,7 @@
 
 .input-icon input {
     width: 100%;
-    padding: 1rem 2.8rem 1rem 2.8rem;
+    padding: 1rem 3.2rem 1rem 2.8rem; /* increased right padding for eye icon */
     border: 2px solid rgba(218, 165, 32, 0.3);
     border-radius: 10px;
     background-color: var(--input-bg);
@@ -160,6 +160,7 @@
     font-size: 1rem;
     color: var(--text-color);
     height: 3rem;
+    position: relative;
 }
 
 .input-icon i:not(.toggle-password) {
@@ -181,15 +182,18 @@
 
 .input-icon .toggle-password {
     position: absolute;
-    right: 1rem;
+    right: 1.2rem;
     top: 50%;
     transform: translateY(-50%);
     color: var(--primary-color);
     opacity: 0.7;
     cursor: pointer;
     padding: 0.5rem;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     z-index: 2;
+    line-height: 1;
+    display: flex;
+    align-items: center;
 }
 
 .input-icon input:focus {
@@ -560,8 +564,32 @@
         padding: 1rem;
     }
 
+    .input-icon input {
+        padding: 0.8rem 2.8rem 0.8rem 2.3rem; /* slightly more right padding for icon */
+        font-size: 1rem;
+        height: 2.5rem;
+    }
+
+    .input-icon .toggle-password {
+        right: 0.9rem;
+        font-size: 1.1rem;
+        padding: 0.3rem;
+    }
+
+    .signin-box {
+        min-height: 520px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
     .temple-border {
-        padding: 2rem 1.5rem;
+        padding: 2.5rem 1.5rem 2.5rem 1.5rem;
+        min-height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .welcome-text {
@@ -572,6 +600,8 @@
         grid-template-columns: 1fr;
     }
 }
+
+
 
 /* Custom Checkbox */
 .remember-me input {
