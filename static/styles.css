@@ -1549,6 +1549,7 @@ header {
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    justify-items: center;
 }
 
 .song-card {
@@ -1755,4 +1756,12 @@ header {
 .image-grid,
 .temple-img {
     display: none;
-} 
+}
+
+/* Utility: Email wrap for long emails */
+.email-wrap {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+    display: inline-block;
+    max-width: 100%;
+}
