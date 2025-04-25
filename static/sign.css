@@ -271,7 +271,8 @@
     }
 
     .temple-border {
-        padding: 2rem 1rem;
+        padding: 1.2rem 0.7rem;
+        border-radius: 8px;
     }
 
     .temple-border::before {
@@ -294,8 +295,10 @@
     }
 
     .input-icon input {
-        padding: 0.8rem 2.5rem;
-        height: 2.8rem;
+        padding: 1rem 2.5rem;
+        height: 3rem;
+        font-size: 1.1rem;
+        border-radius: 8px;
     }
 
     .input-icon i:not(.toggle-password) {
@@ -319,9 +322,10 @@
     }
 
     .signin-btn {
-        padding: 0.8rem;
-        font-size: 1rem;
-        margin-top: 1rem;
+        padding: 1rem;
+        font-size: 1.1rem;
+        margin-top: 1.1rem;
+        border-radius: 8px;
     }
 
     .signup-link {
@@ -381,6 +385,8 @@
     .signin-box {
         max-width: 100%;
         margin: 0.5rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(139,0,0,0.10);
     }
 }
 
@@ -391,7 +397,8 @@
     }
 
     .temple-border {
-        padding: 1.5rem 0.8rem;
+        padding: 0.7rem 0.3rem;
+        border-radius: 6px;
     }
 
     .welcome-text {
@@ -403,9 +410,10 @@
     }
 
     .input-icon input {
-        padding: 0.7rem 2.2rem;
-        height: 2.6rem;
-        font-size: 0.95rem;
+        padding: 0.7rem 1.5rem;
+        height: 2.1rem;
+        font-size: 0.9rem;
+        border-radius: 6px;
     }
 
     .input-icon i:not(.toggle-password) {
