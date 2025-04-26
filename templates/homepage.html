@@ -821,6 +821,13 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            max-width: 100vw;
+            max-height: 60vw;
+            min-height: 180px;
+            border-radius: 10px;
+            background: #fff;
+            display: block;
+            margin: 0 auto;
             transition: transform 0.3s ease;
         }
 
@@ -860,6 +867,11 @@
         .gallery-slides {
             position: relative;
             height: 100%;
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f9f9f9;
         }
 
         .slide {
@@ -869,11 +881,13 @@
             height: 100%;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
+            z-index: 1;
         }
 
         .slide.active {
             display: block;
             opacity: 1;
+            z-index: 2;
         }
 
         .prev, .next {
@@ -910,48 +924,15 @@
             transform: translateY(-50%) scale(1.1);
         }
 
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-            color: white;
-            padding: 20px 10px;
-            text-align: center;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-overlay p {
-            margin: 0;
-            font-size: 1.1rem;
-            font-weight: 500;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        .timestamp {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.9rem;
-            z-index: 2;
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            transform: translateY(0);
-        }
-
         .dots-container {
             position: absolute;
-            bottom: 15px;
+            bottom: 8px;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 2;
+            z-index: 4;
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+            padding: 2px 8px;
         }
 
         .dot {
@@ -1032,6 +1013,9 @@
 
             .gallery-item {
                 aspect-ratio: 16/9;
+                max-width: 100vw;
+                max-height: 60vw;
+                min-height: 180px;
             }
 
             .prev, .next {

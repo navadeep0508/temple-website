@@ -353,6 +353,9 @@
         .om-symbol-sidebar.glow {
             animation: divine-glow 2s infinite;
         }
+        .sno-1 { color: #DAA520; font-weight: bold; }
+        .sno-2 { color: #8B0000; font-weight: bold; }
+        .sno-3 { color: #1E90FF; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -403,7 +406,7 @@
         <div class="donators-container">
             <div class="donators-header">
                 <h1>Our Major Contributors</h1>
-                <p>We are grateful to these generous donors who have made significant contributions to our temple</p>
+                <p>గమనిక: ఈ నిధి సేకరణ యొక్క ముఖ్య ఉద్దేశం, రాములవారి  నిత్య దీప,ధూప నైవేద్య కైంకర్యాల నిర్వహన నిమిత్తం సేకరించబడినది. ఈ పుణ్యకార్యక్రమంలో  పాలుపంచుకునేవారి తరతరాల వరకు ఈ పుణ్యపలితం పొందేలా దీనిని ఉద్దేశించపడినది. సేకరించబడిన మూలధనం యొక్క వడ్డీ మొత్తని మాత్రమే ఈ కార్యక్రమం నిర్వహణకు వినిమయించబడుతుంది తప్ప, మూలధనాన్ని వినిమయింపబడదు</p>
             </div>
             
             <table class="donators-table">
@@ -418,7 +421,7 @@
                 <tbody>
                     {% for donor in manual_donors %}
                     <tr>
-                        <td>{{ loop.index }}</td>
+                        <td class="sno-number sno-{{ loop.index }}">{{ loop.index }}</td>
                         <td>{{ donor['full_name'] }}</td>
                         <td>{{ donor['address'] }}</td>
                         <td class="amount">{{ "{:,.0f}".format(donor['total_amount']|float) }}</td>
@@ -447,7 +450,7 @@
                 <tbody>
                     {% for donor in priest_donors %}
                     <tr>
-                        <td>{{ loop.index }}</td>
+                        <td class="sno-number sno-{{ loop.index }}">{{ loop.index }}</td>
                         <td>{{ donor['full_name'] }}</td>
                         <td>{{ donor['date'] }}</td>
                         <td class="amount">{{ "{:,.0f}".format(donor['amount']|float) }}</td>

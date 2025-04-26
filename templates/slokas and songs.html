@@ -8,6 +8,61 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* Enhanced centering and mobile styles */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            box-sizing: border-box;
+        }
+        .slokas-section, .songs-section {
+            width: 100%;
+            max-width: 600px;
+            margin: 1.5rem auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .slokas-container, .songs-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+        }
+        .sloka-card, .song-card {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(139,0,0,0.08);
+            padding: 1.2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        @media (max-width: 600px) {
+            .main-content {
+                padding: 1rem 2vw;
+            }
+            .slokas-section, .songs-section {
+                padding: 0.5rem 0;
+                max-width: 100vw;
+            }
+            .sloka-card, .song-card {
+                padding: 0.8rem 0.4rem;
+                max-width: 99vw;
+            }
+            .slokas-container, .songs-container {
+                gap: 0.7rem;
+            }
+        }
         .back-nav {
             position: absolute;
             left: 20px;
