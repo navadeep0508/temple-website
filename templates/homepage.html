@@ -802,10 +802,10 @@
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 0 20px;
-            max-width: 1200px;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            padding: 0 15px;
+            max-width: 450px;
             margin: 0 auto;
         }
 
@@ -814,7 +814,12 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            aspect-ratio: 4/3;
+            aspect-ratio: 16/9;
+            max-width: 100%;
+            max-height: 60vw;
+            min-height: 180px;
+            margin: 0 auto;
+            width: 100%;
         }
 
         .gallery-item img {
@@ -1009,13 +1014,21 @@
                 grid-template-columns: 1fr;
                 gap: 15px;
                 padding: 0 15px;
+                max-width: 450px;
+                margin: 0 auto;
             }
 
             .gallery-item {
                 aspect-ratio: 16/9;
-                max-width: 100vw;
+                max-width: 100%;
                 max-height: 60vw;
                 min-height: 180px;
+                margin: 0 auto;
+                width: 100%;
+            }
+
+            .gallery-section {
+                padding: 40px 10px;
             }
 
             .prev, .next {
@@ -1122,6 +1135,7 @@
 
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
+                max-width: 90%;
             }
 
             .quick-actions {
@@ -1131,6 +1145,24 @@
 
             .action-card {
                 flex: 0 0 calc(50% - 15px);
+            }
+        }
+
+        /* Additional mobile gallery styling for better centering */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                max-width: 450px !important;
+                margin: 0 auto !important;
+            }
+            
+            .gallery-item {
+                max-width: 100% !important;
+                margin: 0 auto !important;
+                width: 100% !important;
+            }
+            
+            .gallery-section {
+                padding: 40px 10px !important;
             }
         }
     </style>
@@ -1254,7 +1286,7 @@
 
             <section id="gallery" class="gallery-section">
                 <h2 class="section-title">Temple Gallery</h2>
-                <div class="gallery-grid">
+                <div class="gallery-grid" style="max-width: 450px; margin-left: auto; margin-right: auto;">
                     <div class="gallery-item slideshow-container">
                         <div class="gallery-slides">
                             <div class="slide fade active">
