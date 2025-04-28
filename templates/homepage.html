@@ -265,6 +265,92 @@
             margin-bottom: 10px;
         }
 
+        /* Password toggle icon positioning */
+        .input-icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-icon input {
+            width: 100%;
+            padding: 1rem 3.2rem 1rem 2.8rem;
+            border: 2px solid rgba(218, 165, 32, 0.3);
+            border-radius: 10px;
+            background-color: #fff;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            color: #333;
+            height: 3rem;
+            position: relative;
+        }
+
+        .input-icon i:not(.toggle-password) {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+            opacity: 0.7;
+            font-size: 1.2rem;
+            pointer-events: none;
+            width: 1.2rem;
+            text-align: center;
+        }
+
+        .input-icon .toggle-password {
+            position: absolute;
+            right: 1rem;
+            top: 52%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+            opacity: 0.7;
+            cursor: pointer;
+            padding: 0.5rem;
+            font-size: 1.2rem;
+            z-index: 2;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            background: transparent;
+            border: none;
+            outline: none;
+        }
+
+        .input-icon input:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.2);
+        }
+
+        .input-icon input:focus + i:not(.toggle-password) {
+            color: var(--secondary-color);
+            opacity: 1;
+        }
+
+        .input-icon i:hover {
+            opacity: 1;
+            color: var(--secondary-color);
+        }
+
+        /* Mobile adjustments for toggle-password */
+        @media (max-width: 768px) {
+            .input-icon .toggle-password {
+                right: 0.8rem;
+                top: 54%;
+                font-size: 1.1rem;
+                padding: 0.4rem;
+            }
+        }
+        
+        @media (max-width: 375px) {
+            .input-icon .toggle-password {
+                right: 0.6rem;
+                top: 56%;
+                font-size: 1rem;
+                padding: 0.3rem;
+            }
+        }
+
         /* For smaller screens */
         @media (max-width: 992px) {
             .logo {
@@ -1398,6 +1484,33 @@
                             <p>Poleramma Thalli • <span class="view-count-3">1/4</span></p>
                         </div>
                     </div>
+                    <div class="gallery-item slideshow-container">
+                        <div class="gallery-slides">
+                            <div class="slide fade active">
+                                <img src="{{ url_for('static', filename='srirama night view.jpg') }}" alt="Sri Rama Night View">
+                            </div>
+                            <div class="slide fade">
+                                <img src="{{ url_for('static', filename='close sitharama kalyanam.jpg') }}" alt="Sitharama Kalyanam">
+                            </div>
+                            <div class="slide fade">
+                                <img src="{{ url_for('static', filename='temple decor.jpg') }}" alt="Temple Decoration">
+                            </div>
+                            <div class="slide fade">
+                                <img src="{{ url_for('static', filename='kalyanam temple.jpg') }}" alt="Kalyanam Temple">
+                            </div>
+                            <a class="prev" onclick="changeSlide(-1, 3)">❮</a>
+                            <a class="next" onclick="changeSlide(1, 3)">❯</a>
+                            <div class="dots-container">
+                                <span class="dot" onclick="currentSlide(1, 3)"></span>
+                                <span class="dot" onclick="currentSlide(2, 3)"></span>
+                                <span class="dot" onclick="currentSlide(3, 3)"></span>
+                                <span class="dot" onclick="currentSlide(4, 3)"></span>
+                            </div>
+                        </div>
+                        <div class="gallery-overlay">
+                            <p>Festive Clicks • <span class="view-count-4">1/4</span></p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -1562,11 +1675,12 @@
         // Initialize slideshow
         initSlideshow();
 
-        let slideIndex = [1, 1, 1];
-        let slideTimer = [null, null, null];
+        let slideIndex = [1, 1, 1, 1];
+        let slideTimer = [null, null, null, null];
         showSlides(1, 0);
         showSlides(1, 1);
         showSlides(1, 2);
+        showSlides(1, 3);
 
         function resetSlideTimer(no) {
             // Clear existing timer
@@ -1593,7 +1707,7 @@
             const slideshows = document.querySelectorAll('.gallery-slides');
             const slides = slideshows[no].querySelectorAll('.slide');
             const dots = slideshows[no].querySelectorAll('.dot');
-            const viewCount = no === 0 ? document.querySelector('.view-count') : no === 1 ? document.querySelector('.view-count-2') : document.querySelector('.view-count-3');
+            const viewCount = no === 0 ? document.querySelector('.view-count') : no === 1 ? document.querySelector('.view-count-2') : no === 2 ? document.querySelector('.view-count-3') : document.querySelector('.view-count-4');
             
             if (n > slides.length) {slideIndex[no] = 1}
             if (n < 1) {slideIndex[no] = slides.length}
@@ -1612,6 +1726,7 @@
         resetSlideTimer(0);
         resetSlideTimer(1);
         resetSlideTimer(2);
+        resetSlideTimer(3);
     </script>
 </body>
 </html>
