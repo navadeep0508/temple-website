@@ -162,20 +162,10 @@
             text-align: center;
         }
         
-        /* Style for top 3 ranks */
-        .donators-table tr:nth-child(1) td:first-child {
-            color: gold;
-            font-size: 1.2em;
-        }
-        
-        .donators-table tr:nth-child(2) td:first-child {
-            color: silver;
-            font-size: 1.1em;
-        }
-        
-        .donators-table tr:nth-child(3) td:first-child {
-            color: #cd7f32; /* bronze */
-            font-size: 1.1em;
+        /* Remove special styling for top 3 ranks */
+        .sno-1, .sno-2, .sno-3 { 
+            color: var(--primary-color);
+            font-weight: bold;
         }
 
         .donators-header small {
@@ -353,9 +343,6 @@
         .om-symbol-sidebar.glow {
             animation: divine-glow 2s infinite;
         }
-        .sno-1 { color: #DAA520; font-weight: bold; }
-        .sno-2 { color: #8B0000; font-weight: bold; }
-        .sno-3 { color: #1E90FF; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -460,10 +447,6 @@
             </table>
         </div>
     </section>
-
-    <footer>
-        <p>&copy; 2025 Sri Kodandarama Swami Temple. All rights reserved.</p>
-    </footer>
 
     <script>
         // Mobile sidebar functionality
