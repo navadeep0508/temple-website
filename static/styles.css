@@ -886,6 +886,12 @@ footer {
         flex: 1;
         margin-right: 60px;
     }
+
+    .logo {
+        width: 55px;
+        height: 55px;
+        border-width: 2.5px;
+    }
 }
 
 /* Add these animation styles */
